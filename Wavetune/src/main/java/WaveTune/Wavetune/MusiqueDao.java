@@ -2,12 +2,18 @@ package WaveTune.Wavetune;
 
 import java.util.Iterator;
 
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
+import org.skife.jdbi.v2.tweak.BeanMapperFactory;
+
 public interface MusiqueDao {
-	@SqlUpdate("CREATE TABLE IF NOT EXISTS musiques (id INTEGER PRIMARY KEY,pseudo STRING, titre STRING, album TEXT, dateUpload STRING, url TEXT, artiste TEXT)")
+	@SqlUpdate("CREATE TABLE IF NOT EXISTS musiques (id INTEGER PRIMARY KEY,pseudo STRING, titre STRING, album TEXT, dateUpload STRING, url TEXT, artiste TEXT,genre TEXT, img TEXT)")
 	public void createTable();
 
-	@SqlUpdate("INSERT INTO musiques (titre,album,dateUpload,url,artiste) VALUES (:titre,:album,:dateUpload,:url,:artiste)")
-	public void insertMusique(@Bind("pseudo") String pseudo,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste);
+	@SqlUpdate("INSERT INTO musiques (titre,album,dateUpload,url,artiste,genre,img) VALUES (:titre,:album,:dateUpload,:url,:artiste,:genre,:img)")
+	public void insertMusique(@Bind("pseudo") String pseudo,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
 
 	@SqlQuery("SELECT * FROM musiques where url=:url")
 	@RegisterMapperFactory(BeanMapperFactory.class)

@@ -2,6 +2,12 @@ package WaveTune.Wavetune;
 
 import java.util.Iterator;
 
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
+import org.skife.jdbi.v2.tweak.BeanMapperFactory;
+
 public interface UserDao {
 	@SqlUpdate("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, pseudo STRING, password STRING, email STRING, type STRING, dateInscription STRING, des TEXT, fb TEXT, twitter TEXT, gplus TEXT)")
 	public void createTable();

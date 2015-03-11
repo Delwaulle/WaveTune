@@ -9,14 +9,42 @@ public class Musique {
 	private String dateUpload;
 	private String url;
 	private String artiste;
+	private String genre;
+	private String img;
 
-	public Musique(String pseudo, String titre, String album, String dateUpload, String url, String artiste){
+	public Musique(String pseudo, String titre, String album, String dateUpload, String url, String artiste,String genre,String img){
 		this.pseudo=pseudo;
 		this.titre = titre;
 		this.album=album;
 		this.dateUpload = dateUpload;
 		this.url = url;
 		this.artiste = artiste;
+		this.genre=genre;
+		this.img=img;
+	}
+
+
+
+	public String getGenre() {
+		return genre;
+	}
+
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+
+
+	public String getImg() {
+		return img;
+	}
+
+
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 
