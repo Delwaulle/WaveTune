@@ -25,5 +25,8 @@ public class App extends Application{
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"wavetune.db");
 		System.out.println("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"wavetune.db");
 		dbi = new DBI(ds);
+		dbi.open(UserDao.class).createTable();
+		dbi.open(MusiqueDao.class).createTable();
+
 	}
 }

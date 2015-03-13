@@ -1,5 +1,6 @@
 package WaveTune.Wavetune;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
@@ -14,6 +15,11 @@ public interface MusiqueDao {
 
 	@SqlUpdate("INSERT INTO musiques (titre,album,dateUpload,url,artiste,genre,img) VALUES (:titre,:album,:dateUpload,:url,:artiste,:genre,:img)")
 	public void insertMusique(@Bind("pseudo") String pseudo,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
+
+
+	@SqlQuery("SELECT id FROM musiques;")
+	public ArrayList<Integer> getAllIdMusic();
+
 
 	@SqlQuery("SELECT * FROM musiques where url=:url")
 	@RegisterMapperFactory(BeanMapperFactory.class)
