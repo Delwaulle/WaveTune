@@ -78,8 +78,9 @@ public interface UserDao {
 	@SqlQuery("SELECT pseudo FROM users WHERE id=:id")
 	public String selectPseudo(@Bind("id") int id);
 
-	@SqlQuery("SELECT pseudo FROM users WHERE pseudo=:pseudo and password=:password")
-	public String selectPseudo(@Bind("pseudo") String pseudo, @Bind("password") String password);
+	@SqlQuery("SELECT * FROM users WHERE email=:email and password=:password")
+	@RegisterMapperFactory(BeanMapperFactory.class)
+	public User containsUser(@Bind("email") String email, @Bind("password") String password);
 
 	@SqlUpdate("DROP TABLE IF EXISTS users")
 	public void dropTable();

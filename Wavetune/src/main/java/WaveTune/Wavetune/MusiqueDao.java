@@ -17,8 +17,8 @@ public interface MusiqueDao {
 	public void insertMusique(@Bind("pseudo") String pseudo,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
 
 
-	@SqlQuery("SELECT id FROM musiques;")
-	public ArrayList<Integer> getAllIdMusic();
+	@SqlQuery("SELECT id FROM musiques WHERE pseudo=:pseudo;")
+	public ArrayList<Integer> getAllIdMusic(@Bind("pseudo") String pseudo);
 
 
 	@SqlQuery("SELECT * FROM musiques where url=:url")
