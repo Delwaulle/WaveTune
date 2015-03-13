@@ -23,7 +23,7 @@ public class App extends Application{
 	static {
 		SQLiteDataSource ds = new SQLiteDataSource();
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+"wavetune.db");
-		System.out.println("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+System.getProperty("file.separator")+"wavetune.db");
+		System.out.println("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+"wavetune.db");
 		dbi = new DBI(ds);
 		dbi.open(UserDao.class).createTable();
 		dbi.open(MusiqueDao.class).createTable();
