@@ -1,4 +1,8 @@
 package WaveTune.Wavetune;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -28,10 +32,37 @@ public class UserResource {
 		Date date = new Date();
 		String dateInscription =date.toString();
 		if(userDao.selectPseudo(pseudo).equals(null)){
-			userDao.insertUser(pseudo, password, email, dateInscription);
+			userDao.insertUser(pseudo, encodeMD5(password), email, dateInscription);
+			new File("directory"+File.separator+pseudo).mkdirs();
 			return Response.accepted().status(Status.CREATED).build();
 		}
 		return Response.accepted().status(Status.CONFLICT).build();
+	}
+
+	private String encodeMD5(String password){
+		byte[] bytesOfMessage = null;
+		try {
+			bytesOfMessage = password.getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte[] thedigest = md.digest(bytesOfMessage);
+		String passMD5 = null;
+		try {
+			passMD5 = new String(thedigest, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return passMD5;
 	}
 
 	@GET

@@ -1,6 +1,7 @@
 package WaveTune.Wavetune;
 
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +28,9 @@ public class App extends Application{
 		dbi = new DBI(ds);
 		dbi.open(UserDao.class).createTable();
 		dbi.open(MusiqueDao.class).createTable();
+		File dir =new File("directory");
+		if(!dir.exists())
+			dir.mkdirs();
 
 	}
 }
