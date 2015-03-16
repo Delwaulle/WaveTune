@@ -30,7 +30,7 @@
   <body>
 
     	<!-- ----------------- MENU HAUT ------------------- -->
-	<%@ include file="menu.html"%>
+	<%@ include file="navbar.html"%>
 	<!-- ----------------- FIN MENU HAUT ------------------- -->
 
     <div class="container">
