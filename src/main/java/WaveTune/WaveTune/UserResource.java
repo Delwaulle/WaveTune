@@ -66,10 +66,11 @@ public class UserResource {
 	}
 
 	@GET
+	@Path("{pseudo}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Integer> getAllId(User user){
-		return musiqueDao.getAllIdMusic(user.getPseudo());
+	public List<Integer> getAllId(@PathParam("pseudo") String pseudo){
+		return musiqueDao.getAllIdMusic(pseudo);
 	}
 
 	@DELETE
