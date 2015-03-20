@@ -107,7 +107,7 @@ public class UserResource {
 
 	@POST
 	@Path("connection")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public User getUser(User user ) {
 		System.out.println(user.getEmail());
 		User out = find(user.getEmail(),user.getPassword());
