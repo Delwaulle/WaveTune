@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -20,14 +21,14 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 @Path("/user")
-@Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 	//private static Map<Integer, User> users = new HashMap<Integer, User>();
 	private final UserDao userDao=App.dbi.open(UserDao.class);
 	private final MusiqueDao musiqueDao=App.dbi.open(MusiqueDao.class);
 
 	@POST
-	public Response createUser(String pseudo, String password,String email) {
+	@Consumes(MediaType.TEXT_PLAIN)
+	public Response createUser(@FormParam("pseudo") String pseudo,@FormParam("password") String password,@FormParam("email") String email) {
 
 		Date date = new Date();
 		String dateInscription =date.toString();
@@ -67,7 +68,7 @@ public class UserResource {
 
 	@GET
 	@Path("{pseudo}")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Integer> getAllId(@PathParam("pseudo") String pseudo){
 		return musiqueDao.getAllIdMusic(pseudo);
