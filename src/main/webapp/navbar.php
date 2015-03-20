@@ -20,7 +20,7 @@
 <!-- Button trigger modal -->
 
 
-  <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
+  <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
 
   
 
@@ -43,7 +43,7 @@
             <!-- Sign In Form -->
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="userid">Pseudo:</label>
+              <label class="control-label" for="userid">Email:</label>
               <div class="controls">
                 <input required="" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
               </div>
