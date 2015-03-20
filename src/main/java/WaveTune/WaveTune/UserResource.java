@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -27,14 +26,14 @@ public class UserResource {
 	private final MusiqueDao musiqueDao=App.dbi.open(MusiqueDao.class);
 
 	@POST
-	@Consumes(MediaType.TEXT_PLAIN)
-	public Response createUser(@FormParam("pseudo") String pseudo,@FormParam("password") String password,@FormParam("email") String email) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createUser(User user) {
 
 		Date date = new Date();
 		String dateInscription =date.toString();
-		if(userDao.selectPseudo(pseudo).equals(null)){
-			userDao.insertUser(pseudo, encodeMD5(password), email, dateInscription);
-			new File("directory"+File.separator+pseudo).mkdirs();
+		if(userDao.selectPseudo(user.getPseudo()).equals(null)){
+			userDao.insertUser(user.getPseudo(), encodeMD5(user.getPassword()), user.getEmail(), dateInscription);
+			new File("directory"+File.separator+user.getPseudo()).mkdirs();
 			return Response.accepted().status(Status.CREATED).build();
 		}
 		return Response.accepted().status(Status.CONFLICT).build();
