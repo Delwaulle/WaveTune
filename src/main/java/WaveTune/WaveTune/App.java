@@ -26,8 +26,13 @@ public class App extends Application{
 		ds.setUrl("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+"wavetune.db");
 		System.out.println("jdbc:sqlite:"+System.getProperty("java.io.tmpdir")+"wavetune.db");
 		dbi = new DBI(ds);
+		dbi.open(UserDao.class).dropTable();
+		dbi.open(MusiqueDao.class).dropTable();
 		dbi.open(UserDao.class).createTable();
 		dbi.open(MusiqueDao.class).createTable();
+		dbi.open(UserDao.class).createUserAdmin();
+		User usr=dbi.open(UserDao.class).selectUserbyPseudo("admin");
+		System.out.println(usr.getEmail()+" -- "+usr.getPseudo());
 		File dir =new File("directory");
 		if(!dir.exists())
 			dir.mkdirs();

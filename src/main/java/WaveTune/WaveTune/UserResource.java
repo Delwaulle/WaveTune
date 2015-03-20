@@ -106,7 +106,7 @@ public class UserResource {
 	}
 
 	@GET
-	@Path("/{email}/{password}")
+	@Path("/{email}&{password}")
 	public User getUser(@PathParam("email") String email,@PathParam("password") String password ) {
 		User out = find(email,password);
 		if (out == null) {

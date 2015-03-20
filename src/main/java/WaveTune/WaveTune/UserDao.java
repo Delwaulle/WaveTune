@@ -15,6 +15,9 @@ public interface UserDao {
 	@SqlUpdate("INSERT INTO users (pseudo,password,type,dateInscription) VALUES (:pseudo,:password,'standard user',:date)")
 	public void insertUser(@Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("date") String date);
 
+	@SqlUpdate("INSERT INTO users (pseudo,password,email,type) VALUES ('admin','admin','admin@admin','standard user')")
+	public void createUserAdmin();
+
 	@SqlUpdate("INSERT INTO users (pseudo,password,email,type,dateInscription) VALUES(:pseudo,:password,:email,'standard user',:dateInscription)")
 	public void insertUser(@Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("email") String email, @Bind("dateInscription") String dateInscription);
 

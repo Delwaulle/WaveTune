@@ -49,7 +49,7 @@ public interface MusiqueDao {
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	public Iterator<Musique> getPseudoMusique(@Bind("pseudo") String pseudo);
 
-	@SqlUpdate("DROP TABLE musiques")
+	@SqlUpdate("DROP TABLE IF EXISTS musiques")
 	public void dropTable();
 
 	@SqlUpdate("DELETE FROM musiques where id=:id")
