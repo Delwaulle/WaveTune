@@ -91,7 +91,7 @@ public class UserResource {
 	}
 
 	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.TEXT_PLAIN)
 	@Path("{id}")
 	public Response updateUser(@PathParam("id") int id,
 			User user) {
@@ -105,11 +105,14 @@ public class UserResource {
 		return Response.status(200).entity(oldUser).build();
 	}
 
-	@GET
-	@Path("/{email}&{password}")
-	public User getUser(@PathParam("email") String email,@PathParam("password") String password ) {
-		User out = find(email,password);
+	@POST
+	@Path("connection")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public User getUser(User user ) {
+		System.out.println(user.getEmail());
+		User out = find(user.getEmail(),user.getPassword());
 		if (out == null) {
+			System.out.println("erreur");
 			throw new WebApplicationException(404);
 		}
 		return out;

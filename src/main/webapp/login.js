@@ -2,11 +2,11 @@
 	<script>
 	// IMPORTANT ! Otherwise the DOM is not yet created !
 	$(document).ready(function() {
-		$('#signin').click(function (event) {
+		$('#bsignin').click(function (event) {
 		  	// Using the core $.ajax() method
 			$.ajax({
 			// The URL for the request
-			url: "http://localhost:8080",
+			url: "http://localhost:8080/user/connection",
 			// The data to send (will be converted to a query string)
 			data: {'email' : $("#userid").val(),'password' : $("#passwordinput").val()},
 			// Whether this is a POST or GET request

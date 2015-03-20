@@ -29,7 +29,7 @@
 
   <body>
 
-	<?php include 'navbar.php'; ?>
+	<%@include file='navbar.jsp' %>
 
     <div class="container">
 

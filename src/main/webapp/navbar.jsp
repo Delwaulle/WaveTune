@@ -38,7 +38,7 @@
       <div class="modal-body">
         <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST">
             <fieldset>
             <!-- Sign In Form -->
             <!-- Text input-->
@@ -72,7 +72,7 @@
             <div class="control-group">
               <label class="control-label" for="signin"></label>
               <div class="controls">
-                <button id="signin" name="signin" class="btn btn-success">Sign In</button>
+                <button id="bsignin" name="signin" class="btn btn-success">Sign In</button>
               </div>
             </div>
             </fieldset>
