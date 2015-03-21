@@ -86,6 +86,13 @@ public class UserResource {
 	}
 
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{email}&{password}")
+	public User getUser(@PathParam("email") String email, @PathParam("password") String password){
+		return find(email,password);
+	}
+
+	@GET
 	@Path("test")
 	public int simpleGet(@PathParam("email") String email){
 		System.out.println(email);
