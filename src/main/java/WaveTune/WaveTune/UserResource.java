@@ -1,6 +1,4 @@
 package WaveTune.WaveTune;
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -31,14 +29,6 @@ public class UserResource {
 		}
 		return Response.accepted().status(Status.CONFLICT).build();
 	}*/
-
-	@GET
-	@Path("{pseudo}")
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Integer> getAllId(@PathParam("pseudo") String pseudo){
-		return musiqueDao.getAllIdMusic(pseudo);
-	}
 
 	/*@DELETE
 	@Path("{id}")
