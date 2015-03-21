@@ -1,4 +1,10 @@
 package WaveTune.WaveTune;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -9,17 +15,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 @Path("/user")
 public class UserResource {
-	//private static Map<Integer, User> users = new HashMap<Integer, User>();
 	private final UserDao userDao=App.dbi.open(UserDao.class);
 	private final MusiqueDao musiqueDao=App.dbi.open(MusiqueDao.class);
-	/*
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createUser(User user) {
-
+		System.out.println("CREATE USER");
 		Date date = new Date();
 		String dateInscription =date.toString();
 		if(userDao.selectPseudo(user.getPseudo()).equals(null)){
@@ -28,7 +34,34 @@ public class UserResource {
 			return Response.accepted().status(Status.CREATED).build();
 		}
 		return Response.accepted().status(Status.CONFLICT).build();
-	}*/
+	}
+
+
+	private String encodeMD5(String password){
+		byte[] bytesOfMessage = null;
+		try {
+			bytesOfMessage = password.getBytes("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte[] thedigest = md.digest(bytesOfMessage);
+		String passMD5 = null;
+		try {
+			passMD5 = new String(thedigest, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return passMD5;
+	}
 
 	/*@DELETE
 	@Path("{id}")
@@ -65,13 +98,14 @@ public class UserResource {
 	@POST
 	@Path("connection")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User getUser(User user ) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getUser_post(User user ) {
 		System.out.println(user.getEmail());
 		User out = find(user.getEmail(),user.getPassword());
-		if (out == null) {
+		/*if (out == null) {
 			System.out.println("erreur");
 			throw new WebApplicationException(404);
-		}
+		}*/
 		return out;
 	}
 
@@ -79,6 +113,7 @@ public class UserResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{email}&{password}")
 	public User getUser(@PathParam("email") String email, @PathParam("password") String password){
+		System.out.println(email+" -- "+password);
 		return find(email,password);
 	}
 

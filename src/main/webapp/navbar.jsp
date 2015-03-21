@@ -1,3 +1,5 @@
+<script src="login.js"></script>
+<script src="register.js"></script>
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
