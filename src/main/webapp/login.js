@@ -6,7 +6,7 @@
 		  	// Using the core $.ajax() method
 			$.ajax({
 			// The URL for the request
-			url: "http://localhost:8080/user/connection",
+			url: "http://localhost:8080/v1/user/connection",
 			// The data to send (will be converted to a query string)
 			data: {'email' : $("#userid").val(),'password' : $("#passwordinput").val()},
 			// Whether this is a POST or GET request

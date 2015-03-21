@@ -1,13 +1,7 @@
 package WaveTune.WaveTune;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -17,14 +11,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 @Path("/user")
 public class UserResource {
 	//private static Map<Integer, User> users = new HashMap<Integer, User>();
 	private final UserDao userDao=App.dbi.open(UserDao.class);
 	private final MusiqueDao musiqueDao=App.dbi.open(MusiqueDao.class);
-
+	/*
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createUser(User user) {
@@ -37,33 +30,7 @@ public class UserResource {
 			return Response.accepted().status(Status.CREATED).build();
 		}
 		return Response.accepted().status(Status.CONFLICT).build();
-	}
-
-	private String encodeMD5(String password){
-		byte[] bytesOfMessage = null;
-		try {
-			bytesOfMessage = password.getBytes("UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		byte[] thedigest = md.digest(bytesOfMessage);
-		String passMD5 = null;
-		try {
-			passMD5 = new String(thedigest, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return passMD5;
-	}
+	}*/
 
 	@GET
 	@Path("{pseudo}")
@@ -73,7 +40,7 @@ public class UserResource {
 		return musiqueDao.getAllIdMusic(pseudo);
 	}
 
-	@DELETE
+	/*@DELETE
 	@Path("{id}")
 	public Response deleteUser(@PathParam("id") Integer id) {
 		if (userDao.selectPseudo(id)!=null) {
@@ -81,7 +48,7 @@ public class UserResource {
 		}
 		return Response.accepted().status(Status.NOT_FOUND).build();
 	}
-
+	 */
 	protected User find(String email,String password) {
 		User rep=userDao.containsUser(email, password);
 		return rep;
@@ -107,7 +74,7 @@ public class UserResource {
 
 	@POST
 	@Path("connection")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public User getUser(User user ) {
 		System.out.println(user.getEmail());
 		User out = find(user.getEmail(),user.getPassword());
@@ -116,6 +83,13 @@ public class UserResource {
 			throw new WebApplicationException(404);
 		}
 		return out;
+	}
+
+	@GET
+	@Path("test")
+	public int simpleGet(@PathParam("email") String email){
+		System.out.println(email);
+		return 0;
 	}
 
 }

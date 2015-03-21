@@ -38,7 +38,7 @@
       <div class="modal-body">
         <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal" method="POST">
+            <form class="form-horizontal">
             <fieldset>
             <!-- Sign In Form -->
             <!-- Text input-->
