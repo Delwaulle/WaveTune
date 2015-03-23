@@ -5,16 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Date;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import com.sun.jersey.core.header.FormDataContentDisposition;
-import com.sun.jersey.multipart.FormDataParam;
 
 @Path("/music")
 public class MusiqueResource {
@@ -41,7 +36,7 @@ public class MusiqueResource {
 
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-
+	/*
 	public Response uploadFile(
 			@FormDataParam("file") InputStream fileInputStream,
 			@FormDataParam("file") FormDataContentDisposition contentDispositionHeader) {
@@ -68,7 +63,7 @@ public class MusiqueResource {
 
 		return Response.status(200).entity(output).build();
 
-	}
+	}*/
 
 	// save uploaded file to a defined location on the server
 

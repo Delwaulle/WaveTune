@@ -54,11 +54,6 @@
 			<artifactId>tika-parsers</artifactId>
 			<version>1.7</version>
 		</dependency>
-		<dependency>
-       	 	<groupId>com.sun.jersey.contribs</groupId>
-       	 	<artifactId>jersey-multipart</artifactId>
-        	<version>1.17</version>
-    	</dependency>
 		
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
