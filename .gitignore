@@ -1,4 +1,4 @@
-/target/
 *.class 
-*.classpath
+*.classpath 
 *.lst
+/target/
