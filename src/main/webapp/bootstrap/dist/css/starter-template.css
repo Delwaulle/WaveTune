@@ -5,3 +5,52 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+html, body {
+            height: 100%;
+        }
+footer {
+            color: #666;
+            background: #222;
+            padding: 17px 0 18px 0;
+            border-top: 1px solid #000;
+     }
+        footer a {
+            color: #999;
+        }
+        footer a:hover {
+            color: #efefef;
+        }
+        
+		@media (max-width: 767px) {
+            body {
+                padding-right: 0px;
+                padding-left: 0px;
+            }
+    
+            footer, .wrapper {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        .container {
+            max-width: 940px;
+        }
+        /* end responsive footer fix */
+		
+	.bottom-footer{
+		border-top : 1px solid #b2b2b2;
+		margin-top : 10px;
+		padding-top : 10px;
+		color : #b2b2b2;
+	}
+	.footer-nav{
+		text-align : right;
+		list-style: none;
+		
+	}
+	.footer-nav li {
+		display : inline;
+		padding : 0px 10px;
+	}

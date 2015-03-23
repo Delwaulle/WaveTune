@@ -81,8 +81,8 @@ $(document).ready(function() {
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#music">Music</a></li>
+            <li><a href="#music">My Music</a></li>
+			<li><a href="#contact">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
 	<form class="navbar-form navbar-right" role="sign">

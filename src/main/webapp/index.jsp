@@ -35,11 +35,77 @@
 
       <div class="starter-template">
         <h1>WaveTune</h1>
-        <p class="lead">This is WaveTune.<br> Simply and effective.</p>
+        <p class="lead">This is WaveTune.<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		<br> Simply and effective.
+		</p>
       </div>
 
     </div><!-- /.container -->
-
+	
+	<div class="container" id="portfolio">
+		<div class="row padding" id="one">
+			<div class="col-md-6">
+				<img src="images/about.png" class="img-about img-responsive" alt="About image"/>
+			</div>
+			<div class="col-md-6">
+				<h2 class="text-center">&Agrave; propos</h2>
+				<p class="text-justify">WaveTune est le gestionnaire musical de votre biblioth&egrave;que en ligne. Il vous permet d'&eacute;couter votre musique que ce soit sur votre PC ou votre appareil Android. Cr&eacute;&eacute; par un groupe d'&eacute;tudiant de l'IUT A Lille 1, WaveTune est la meilleure solution pour correspondre &agrave; vos besoins.</p>
+				
+			</div>
+		</div>	
+		<hr />
+		
+		<div class="row padding" id="two">
+			<div class="col-md-6">
+				<h2 class="text-center">Contact</h2>
+				<p class="text-justify"> Nous contacter : <br> wavetune@gmail.com <br> Adresse : <br> IUT A Lille 1 - Boulevard Langevin, 59653 Villeneuve-d'Ascq</p>
+				
+			</div>
+			<div class="col-md-6">
+				<img src="images/contact.png" class="img-contact img-responsive" alt="Contact image"/>
+			</div>
+		</div>
+		<hr />
+	</div>
+	
+	<footer class="site-footer">
+      <div class="container">
+		<div class="row">
+        <p></p>
+		</div>
+		<div class="bottom-footer">
+		<div class="col-md-5"> &copy WaveTune 2015</div>
+		<div class="col-md-7">
+			<ul class="footer-nav">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="index.html">My Music</a></li>
+				<li><a href="index.html">About</a></li>
+				<li><a href="index.html">Contact</a></li>	
+			</ul>
+      </div>
+	  </div>
+	 </div>
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -47,5 +113,5 @@
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+  </body> 
 </html>
