@@ -1,5 +1,38 @@
-<script src="login.js"></script>
-<script src="register.js"></script>
+<script src="bootstrap/js/jquery-2.1.3.js"></script>
+<script>
+$(document).ready(function() {
+		$('#bsignin').click(function (event) {
+
+			$.ajax({
+
+			url: "http://localhost:8080/v1/user/connection",
+
+			data: JSON.stringify({"email" : $("#email").val(),"password" : $("#passwordinput").val()}),
+
+			type: "POST",
+
+			dataType : "json",
+			contentType: "application/json",
+
+			success: function( json ) {
+				$("#buttonsigninregister").empty();
+				$("<p>" +json.pseudo+"</p>").appendTo("#buttonsigninregister");
+			},
+			error: function( xhr, status, errorThrown ) {
+			alert( "Sorry, there was a problem!" );
+			console.log( "Error: " + errorThrown );
+			console.log( "Status: " + status );
+			console.dir( xhr );
+			},
+
+			complete: function( xhr, status ) {
+			alert( "The request is complete!" );
+			}
+			});
+		});
+	});
+
+</script>
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -47,7 +80,7 @@
             <div class="control-group">
               <label class="control-label" for="userid">Email:</label>
               <div class="controls">
-                <input required="" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" class="input-medium" required="">
+                <input id="email" name="email" type="text" class="form-control" placeholder="JoeSixpack@gmail.com" class="input-medium" required="">
               </div>
             </div>
 
@@ -55,7 +88,7 @@
             <div class="control-group">
               <label class="control-label" for="passwordinput">Password:</label>
               <div class="controls">
-                <input required="" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
+                <input id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
               </div>
             </div>
 
@@ -81,7 +114,7 @@
             </form>
         </div>
         <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal">
+            <form class="form-horizontal" name="signin" novalidate>
             <fieldset>
             <!-- Sign Up Form -->
             <!-- Text input-->

@@ -1,5 +1,7 @@
-	<script src="bootstrap/js/jquery-2.1.3.js"></script>
-	<script>
+	function include(fileName){
+		document.write("<script type='text/javascript' src='"+fileName+"'></script>" );
+	}
+	include("bootstrap/js/jquery-2.1.3.js");
 	// IMPORTANT ! Otherwise the DOM is not yet created !
 	$(document).ready(function() {
 		$('#confirmsignup').click(function (event) {
@@ -34,4 +36,3 @@
 			});
 		});
 	}); // end document.ready
-    </script>

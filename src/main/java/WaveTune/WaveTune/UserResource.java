@@ -28,7 +28,7 @@ public class UserResource {
 		System.out.println("CREATE USER");
 		Date date = new Date();
 		String dateInscription =date.toString();
-		if(userDao.selectPseudo(user.getPseudo()).equals(null)){
+		if(userDao.selectPseudo(user.getPseudo())==null){
 			userDao.insertUser(user.getPseudo(), encodeMD5(user.getPassword()), user.getEmail(), dateInscription);
 			new File("directory"+File.separator+user.getPseudo()).mkdirs();
 			return Response.accepted().status(Status.CREATED).build();
@@ -97,7 +97,7 @@ public class UserResource {
 
 	@POST
 	@Path("connection")
-	@Consumes(MediaType.APPLICATION_JSON)
+	//@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public User getUser_post(User user ) {
 		System.out.println(user.getEmail());
