@@ -1,5 +1,8 @@
 package WaveTune.WaveTune;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import javax.ws.rs.Consumes;
@@ -33,7 +36,22 @@ public class UserResource {
 		return null;
 	}
 
-	/*
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/alex")
+	public User createUser2(User user) {
+		System.out.println("CREATE USER");
+		Date date = new Date();
+		String dateInscription =date.toString();
+		if(userDao.selectPseudo(user.getPseudo())==null){
+			userDao.insertUser(user.getPseudo(), encodeMD5(user.getPassword()), user.getEmail(), dateInscription);
+			new File("directory"+File.separator+user.getPseudo()).mkdirs();
+			return user;
+		}
+		return null;
+	}
+
 	private String encodeMD5(String password){
 		byte[] bytesOfMessage = null;
 		try {
@@ -58,7 +76,7 @@ public class UserResource {
 			e.printStackTrace();
 		}
 		return passMD5;
-	}*/
+	}
 
 	/*@DELETE
 	@Path("{id}")
