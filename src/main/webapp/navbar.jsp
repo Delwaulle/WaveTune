@@ -15,8 +15,9 @@ $(document).ready(function() {
 			contentType: "application/json",
 
 			success: function( json ) {
-				$("#buttonsigninregister").empty();
-				$("<p>" +json.pseudo+"</p>").appendTo("#buttonsigninregister");
+				alert( json.password );
+				$("#buttonsignin").empty();
+				$("<p>" +json.password+"</p>").appendTo("#buttonsignin");
 			},
 			error: function( xhr, status, errorThrown ) {
 			alert( "Sorry, there was a problem!" );
@@ -54,9 +55,9 @@ $(document).ready(function() {
                     
 <!-- Button trigger modal -->
 
-
+<div id="buttonsignin">
   <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
-
+</div>
   
 
 <!-- Modal -->
