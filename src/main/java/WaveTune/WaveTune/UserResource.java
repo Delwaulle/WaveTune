@@ -112,7 +112,7 @@ public class UserResource {
 
 	@POST
 	@Path("connection")
-	//@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public User getUser_post(User user ) {
 		System.out.println(user.getEmail());
