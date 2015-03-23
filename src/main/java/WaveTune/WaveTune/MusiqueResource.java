@@ -31,7 +31,7 @@ public class MusiqueResource {
 		String genre=ap.getGenre();
 		String album=ap.getAlbum();
 		String img="rsc"+File.separator+"logo.png";
-		musiqueDao.insertMusique("admin", title, album, new Date().toString(), path, artiste, genre, img);
+		musiqueDao.insertMusique(1", title, album, new Date().toString(), path, artiste, genre, img);
 
 		return Response.status(Response.Status.ACCEPTED).build();
 		//return Response.status(Response.Status.CONFLICT).build();
@@ -63,7 +63,7 @@ public class MusiqueResource {
 		String genre=ap.getGenre();
 		String album=ap.getAlbum();
 		String img="rsc"+File.separator+"logo.png";
-		musiqueDao.insertMusique("admin", title, album, new Date().toString(), path, artiste, genre, img);
+		musiqueDao.insertMusique(1, title, album, new Date().toString(), path, artiste, genre, img);
 
 		return Response.status(200).entity(output).build();
 

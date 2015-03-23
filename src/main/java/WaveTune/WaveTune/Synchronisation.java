@@ -29,7 +29,7 @@ public class Synchronisation {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Musique> getAllMusique(User user){
-		return musiqueDao.getAllMusic(user.getPseudo());
+		return musiqueDao.getAllMusic(user.getId());
 	}
 
 	@GET

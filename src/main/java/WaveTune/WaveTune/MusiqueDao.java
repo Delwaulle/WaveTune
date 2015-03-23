@@ -1,7 +1,7 @@
 package WaveTune.WaveTune;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -10,15 +10,15 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface MusiqueDao {
-	@SqlUpdate("CREATE TABLE IF NOT EXISTS musiques (id INTEGER PRIMARY KEY,pseudo STRING, titre STRING, album TEXT, dateUpload STRING, url TEXT, artiste TEXT,genre TEXT, img TEXT)")
+	@SqlUpdate("CREATE TABLE IF NOT EXISTS musiques (id INTEGER PRIMARY KEY,user_id INTEGER, titre STRING, album TEXT, dateUpload STRING, url TEXT, artiste TEXT,genre TEXT, img TEXT,FOREIGN KEY (user_id) REFERENCES Persons(id))")
 	public void createTable();
 
-	@SqlUpdate("INSERT INTO musiques (titre,album,dateUpload,url,artiste,genre,img) VALUES (:titre,:album,:dateUpload,:url,:artiste,:genre,:img)")
-	public void insertMusique(@Bind("pseudo") String pseudo,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
+	@SqlUpdate("INSERT INTO musiques (user_id,titre,album,dateUpload,url,artiste,genre,img) VALUES (:user_id,:titre,:album,:dateUpload,:url,:artiste,:genre,:img)")
+	public void insertMusique(@Bind("user_id") int user_id,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
 
 
-	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo;")
-	public ArrayList<Musique> getAllMusic(@Bind("pseudo") String pseudo);
+	@SqlQuery("SELECT * FROM musiques WHERE user_id=:user_id;")
+	public List<Musique> getAllMusic(@Bind("user_id") int user_id);
 
 
 	@SqlQuery("SELECT url FROM musiques WHERE id=:id;")
@@ -48,9 +48,9 @@ public interface MusiqueDao {
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	public Iterator<Musique> getLastMusique();
 
-	@SqlQuery("SELECT * FROM musiques where pseudo=:pseudo")
+	@SqlQuery("SELECT * FROM musiques where user_id=:user_id")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	public Iterator<Musique> getPseudoMusique(@Bind("pseudo") String pseudo);
+	public Iterator<Musique> getIdMusique(@Bind("user_id") int user_id);
 
 	@SqlUpdate("DROP TABLE IF EXISTS musiques")
 	public void dropTable();

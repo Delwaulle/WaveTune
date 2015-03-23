@@ -18,6 +18,7 @@ public class App extends Application{
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> s = new HashSet<Class<?>>();
 		s.add(UserResource.class);
+		s.add(MusiqueResource.class);
 		return s;
 	}
 
@@ -33,7 +34,7 @@ public class App extends Application{
 		dbi.open(MusiqueDao.class).createTable();
 		dbi.open(UserDao.class).createUserAdmin();
 		User usr=dbi.open(UserDao.class).selectUserbyPseudo("admin");
-		System.out.println(usr.getEmail()+" -- "+usr.getPseudo());
+		System.out.println(usr.getEmail()+" -- "+usr.getPseudo()+" -- "+usr.getId());
 		File dir =new File("directory");
 		if(!dir.exists())
 			dir.mkdirs();
@@ -44,7 +45,6 @@ public class App extends Application{
 		System.out.println(ap.getGenre());
 		System.out.println(ap.getAlbum());
 		System.out.println(new Date().toString());
-		dbi.open(MusiqueDao.class).insertMusique("admin", ap.getTitle(), ap.getAlbum(), new Date().toString(), path, ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
-
+		dbi.open(MusiqueDao.class).insertMusique(1, ap.getTitle(), ap.getAlbum(), new Date().toString(), path, ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
 	}
 }
