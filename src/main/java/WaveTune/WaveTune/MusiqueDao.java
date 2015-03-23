@@ -17,9 +17,12 @@ public interface MusiqueDao {
 	public void insertMusique(@Bind("pseudo") String pseudo,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
 
 
-	@SqlQuery("SELECT id FROM musiques WHERE pseudo=:pseudo;")
-	public ArrayList<Integer> getAllIdMusic(@Bind("pseudo") String pseudo);
+	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo;")
+	public ArrayList<Musique> getAllMusic(@Bind("pseudo") String pseudo);
 
+
+	@SqlQuery("SELECT url FROM musiques WHERE id=:id;")
+	public String getPathMusic(@Bind("id")int id);
 
 	@SqlQuery("SELECT * FROM musiques where url=:url")
 	@RegisterMapperFactory(BeanMapperFactory.class)

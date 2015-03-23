@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 @Path("/user")
 public class UserResource {
@@ -24,16 +23,17 @@ public class UserResource {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createUser(User user) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public User createUser(User user) {
 		System.out.println("CREATE USER");
 		Date date = new Date();
 		String dateInscription =date.toString();
 		if(userDao.selectPseudo(user.getPseudo())==null){
 			userDao.insertUser(user.getPseudo(), encodeMD5(user.getPassword()), user.getEmail(), dateInscription);
 			new File("directory"+File.separator+user.getPseudo()).mkdirs();
-			return Response.accepted().status(Status.CREATED).build();
+			return user;
 		}
-		return Response.accepted().status(Status.CONFLICT).build();
+		return null;
 	}
 
 

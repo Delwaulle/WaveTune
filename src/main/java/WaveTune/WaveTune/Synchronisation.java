@@ -1,15 +1,17 @@
 package WaveTune.WaveTune;
 
+import java.io.File;
 import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/application")
+@Path("/synchronisation")
 @Produces(MediaType.APPLICATION_JSON)
 public class Synchronisation {
 
@@ -26,8 +28,19 @@ public class Synchronisation {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Integer> getAllId(User user){
-		return musiqueDao.getAllIdMusic(user.getPseudo());
+	public List<Musique> getAllMusique(User user){
+		return musiqueDao.getAllMusic(user.getPseudo());
+	}
+
+	@GET
+	@Path("{id}")
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	public Response downloadMusic(@PathParam("id") int id){
+		String pathMusic=musiqueDao.getPathMusic(id);
+		File file=new File(pathMusic);
+		return Response.ok(file, MediaType.APPLICATION_OCTET_STREAM)
+				.header("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"" )
+				.build();
 	}
 
 
