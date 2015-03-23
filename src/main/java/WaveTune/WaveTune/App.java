@@ -2,6 +2,7 @@ package WaveTune.WaveTune;
 
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,6 +37,14 @@ public class App extends Application{
 		File dir =new File("directory");
 		if(!dir.exists())
 			dir.mkdirs();
+		String path="rsc"+File.separator+"Eminem - We Made You"+".mp3";
+		AudioParser ap=new AudioParser(path);
+		System.out.println(ap.getTitle());
+		System.out.println(ap.getArtiste());
+		System.out.println(ap.getGenre());
+		System.out.println(ap.getAlbum());
+		System.out.println(new Date().toString());
+		dbi.open(MusiqueDao.class).insertMusique("admin", ap.getTitle(), ap.getAlbum(), new Date().toString(), path, ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
 
 	}
 }
