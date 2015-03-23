@@ -102,10 +102,6 @@ public class UserResource {
 	public User getUser_post(User user ) {
 		System.out.println(user.getEmail());
 		User out = find(user.getEmail(),user.getPassword());
-		/*if (out == null) {
-			System.out.println("erreur");
-			throw new WebApplicationException(404);
-		}*/
 		return out;
 	}
 

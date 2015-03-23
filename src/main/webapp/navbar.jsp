@@ -32,6 +32,40 @@ $(document).ready(function() {
 			});
 		});
 	});
+	
+	
+	$(document).ready(function() {
+		$('#confirmsignup').click(function (event) {
+		  	// Using the core $.ajax() method
+			$.ajax({
+			// The URL for the request
+			url: "http://localhost:8080/v1/user/",
+			// The data to send (will be converted to a query string)
+			data: JSON.stringify({'email' : $("#Email").val(),'pseudo' : $("#userid").val,'password' : $("#passwordinput").val()}),
+			// Whether this is a POST or GET request
+			type: "POST",
+			// The type of data we expect back
+			dataType : "json",
+			// Code to run if the request succeeds;
+			// the response is passed to the function
+			success: function( json ) {
+				//cookie
+			},
+			// Code to run if the request fails; the raw request and
+			// status codes are passed to the function
+			error: function( xhr, status, errorThrown ) {
+			alert( "Sorry, there was a problem!" );
+			console.log( "Error: " + errorThrown );
+			console.log( "Status: " + status );
+			console.dir( xhr );
+			},
+			// Code to run regardless of success or failure
+			complete: function( xhr, status ) {
+			alert( "The request is complete!" );
+			}
+			});
+		});
+	}); // end document.ready
 
 </script>
 <div class="navbar navbar-inverse navbar-fixed-top">
