@@ -63,7 +63,7 @@
     </div><!-- /.container -->
 	
 	<div class="container" id="portfolio">
-		<div class="row padding" id="one">
+		<div class="row padding" id="about">
 			<div class="col-md-6">
 				<img src="images/about.png" class="img-about img-responsive" alt="About image"/>
 			</div>
@@ -75,7 +75,7 @@
 		</div>	
 		<hr />
 		
-		<div class="row padding" id="two">
+		<div class="row padding" id="contact">
 			<div class="col-md-6">
 				<h2 class="text-center">Contact</h2>
 				<p class="text-justify"> Nous contacter : <br> wavetune@gmail.com <br> Adresse : <br> IUT A Lille 1 - Boulevard Langevin, 59653 Villeneuve-d'Ascq</p>
@@ -88,24 +88,7 @@
 		<hr />
 	</div>
 	
-	<footer class="site-footer">
-      <div class="container">
-		<div class="row">
-        <p></p>
-		</div>
-		<div class="bottom-footer">
-		<div class="col-md-5"> &copy WaveTune 2015</div>
-		<div class="col-md-7">
-			<ul class="footer-nav">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="index.html">My Music</a></li>
-				<li><a href="index.html">About</a></li>
-				<li><a href="index.html">Contact</a></li>	
-			</ul>
-      </div>
-	  </div>
-	 </div>
-    </footer>
+	<%@include file='footer.jsp' %>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

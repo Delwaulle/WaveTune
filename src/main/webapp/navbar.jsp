@@ -81,8 +81,8 @@ $(document).ready(function() {
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#music">My Music</a></li>
-			<li><a href="#contact">About</a></li>
+            <li><a href="#music">Ma musique</a></li>
+			<li><a href="#contact">&Agrave; propos</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
 	<form class="navbar-form navbar-right" role="sign">
@@ -90,7 +90,7 @@ $(document).ready(function() {
 <!-- Button trigger modal -->
 
 <div id="buttonsignin">
-  <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
+  <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>
 </div>
   
 
@@ -101,8 +101,8 @@ $(document).ready(function() {
         <br>
         <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
-              <li class=""><a href="#signup" data-toggle="tab">Register</a></li>
+              <li class="active"><a href="#signin" data-toggle="tab">Se connecter</a></li>
+              <li class=""><a href="#signup" data-toggle="tab">S'inscrire</a></li>
             </ul>
         </div>
       <div class="modal-body">
@@ -113,17 +113,17 @@ $(document).ready(function() {
             <!-- Sign In Form -->
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="userid">Email:</label>
+              <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="email" name="email" type="text" class="form-control" placeholder="JoeSixpack@gmail.com" class="input-medium" required="">
+                <input id="email" name="email" type="text" class="form-control" placeholder="Email" class="input-medium" required="">
               </div>
             </div>
 
             <!-- Password input-->
             <div class="control-group">
-              <label class="control-label" for="passwordinput">Password:</label>
+              <label class="control-label" for="passwordinput"></label>
               <div class="controls">
-                <input id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" class="input-medium">
+                <input id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="Mot de passe" class="input-medium">
               </div>
             </div>
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
               <div class="controls">
                 <label class="checkbox inline" for="rememberme-0">
                   <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
-                  Remember me
+                  Se souvenir de moi
                 </label>
               </div>
             </div>
@@ -142,7 +142,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="signin"></label>
               <div class="controls">
-                <button id="bsignin" name="signin" class="btn btn-success">Sign In</button>
+                <button id="bsignin" name="signin" class="btn btn-success">Se connecter</button>
               </div>
             </div>
             </fieldset>
@@ -154,46 +154,46 @@ $(document).ready(function() {
             <!-- Sign Up Form -->
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="Email">Email:</label>
+              <label class="control-label" for="Email"></label>
               <div class="controls">
-                <input id="Email" name="Email" class="form-control" type="text" placeholder="JoeSixpack@sixpacksrus.com" class="input-large" required="">
+                <input id="Email" name="Email" class="form-control" type="text" placeholder="Email" class="input-large" required="">
               </div>
             </div>
             
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="userid">Pseudo:</label>
+              <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="userid" name="userid" class="form-control" type="text" placeholder="JoeSixpack" class="input-large" required="">
+                <input id="userid" name="userid" class="form-control" type="text" placeholder="Pseudo" class="input-large" required="">
               </div>
             </div>
             
             <!-- Password input-->
             <div class="control-group">
-              <label class="control-label" for="password">Password:</label>
+              <label class="control-label" for="password"></label>
               <div class="controls">
-                <input id="password" name="password" class="form-control" type="password" placeholder="********" class="input-large" required="">
-                <em>1-8 Characters</em>
+                <input id="password" name="password" class="form-control" type="password" placeholder="Mot de passe" class="input-large" required="">
+                <em>1-8</em>
               </div>
             </div>
             
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="reenterpassword">Re-Enter Password:</label>
+              <label class="control-label" for="reenterpassword"></label>
               <div class="controls">
-                <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="********" class="input-large" required="">
+                <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="Re Mot de passe" class="input-large" required="">
               </div>
             </div>
             
             <!-- Multiple Radios (inline) -->
             <br>
             <div class="control-group">
-              <label class="control-label" for="humancheck">Humanity Check:</label>
+              <label class="control-label" for="humancheck">Contr&ocirc;le de validation:</label>
               <div class="controls">
                 <label class="radio inline" for="humancheck-0">
-                  <input type="radio" name="humancheck" id="humancheck-0" value="robot" checked="checked">I'm a Robot</label>
+                  <input type="radio" name="humancheck" id="humancheck-0" value="robot" checked="checked">Je suis un robot.</label>
                 <label class="radio inline" for="humancheck-1">
-                  <input type="radio" name="humancheck" id="humancheck-1" value="human">I'm Human</label>
+                  <input type="radio" name="humancheck" id="humancheck-1" value="human">Je suis un humain.</label>
               </div>
             </div>
             
@@ -201,7 +201,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="confirmsignup"></label>
               <div class="controls">
-                <button id="confirmsignup" name="confirmsignup" class="btn btn-success">Sign Up</button>
+                <button id="confirmsignup" name="confirmsignup" class="btn btn-success">S'inscrire</button>
               </div>
             </div>
             </fieldset>
@@ -211,7 +211,7 @@ $(document).ready(function() {
       </div>
       <div class="modal-footer">
       <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
         </center>
       </div>
     </div>
