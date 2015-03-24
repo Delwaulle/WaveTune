@@ -1,5 +1,6 @@
 package WaveTune.WaveTune;
 
+
 public class Musique {
 
 	private int id;

@@ -18,22 +18,28 @@ public interface MusiqueDao {
 
 
 	@SqlQuery("SELECT * FROM musiques WHERE user_id=:user_id;")
+	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<Musique> getAllMusic(@Bind("user_id") int user_id);
 
 	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo  ORDER BY titre ASC;")
+	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<Musique> getAllMusicByPseudo(@Bind("pseudo") String pseudo);
 
 
 	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo and album=:album ORDER BY titre ASC;")
+	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<Musique> getAlbumByPseudo(@Bind("pseudo") String pseudo, @Bind("album") String album);
 
 	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo and artiste=:artiste ORDER BY titre ASC;")
+	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<Musique> getArtisteByPseudo(@Bind("pseudo") String pseudo, @Bind("artiste") String artiste);
 
 	@SqlQuery("SELECT album FROM musiques WHERE pseudo=:pseudo;")
+	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<String> getAllAlbum(@Bind("pseudo")String pseudo);
 
 	@SqlQuery("SELECT artiste FROM musiques WHERE pseudo=:pseudo;")
+	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<String> getAllArtiste(@Bind("pseudo")String pseudo);
 
 	@SqlQuery("SELECT url FROM musiques WHERE id=:id;")

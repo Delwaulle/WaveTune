@@ -23,6 +23,7 @@ public class App extends Application{
 		s.add(MultiPartFeature.class);
 		s.add(LoggingFilter.class);
 		s.add(MusiqueResource.class);
+		s.add(Synchronisation.class);
 		return s;
 	}
 
