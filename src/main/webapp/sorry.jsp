@@ -39,10 +39,10 @@
     <hr class="prettyline">
     <br>
     <center>
-    <h1><b>Sorry</b></h1>
-    <h3>You need to sign in or register for this service</h3>
+    <h1><b>D&eacute;sol&eacute;</b></h1>
+    <h3>Vous devez &ecirc;tre connect&eacute; pour utiliser ce service.</h3>
     <br>
-  <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign In/Register</button>
+  <button class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>
   </center>
   <br>
     <hr class="prettyline">
@@ -54,7 +54,8 @@
 
     </div><!-- /.container -->
 
-
+	<%@include file='footer.jsp' %>
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

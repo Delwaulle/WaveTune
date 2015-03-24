@@ -1,4 +1,6 @@
 <script src="bootstrap/js/jquery-2.1.3.js"></script>
+<script src="bootstrap/js/validator.js"></script>
+<script src="cookie.js"></script>
 <script>
 $(document).ready(function() {
 		$('#bsignin').click(function (event) {
@@ -16,6 +18,7 @@ $(document).ready(function() {
 
 			success: function( json ) {
 				alert( json.password );
+				createCookie("pseudo", json.pseudo, 7);
 				$("#buttonsignin").empty();
 				$("<p>" +json.password+"</p>").appendTo("#buttonsignin");
 			},
@@ -68,6 +71,15 @@ $(document).ready(function() {
 	}); // end document.ready
 
 </script>
+<script>
+	var login = readCookie("pseudo");
+	if(login != null)
+		$("#buttonsignin").empty();
+		$("<p>" +login+"</p>).appendTo("#buttonsignin");
+		$("#deconnect").style.display = "";
+	else
+		&(<button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>).appendTo("#buttonsignin");
+</script>
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -77,13 +89,13 @@ $(document).ready(function() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">WaveTune</a>
+          <a class="navbar-brand" href="/#">WaveTune</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#music">Ma musique</a></li>
-			<li><a href="#contact">&Agrave; propos</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/music.jsp">Ma musique</a></li>
+			<li><a href="/#about">&Agrave; propos</a></li>
+            <li><a href="/#contact">Contact</a></li>
           </ul>
 	<form class="navbar-form navbar-right" role="sign">
                     
@@ -91,6 +103,9 @@ $(document).ready(function() {
 
 <div id="buttonsignin">
   <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>
+  <div id"deconnect" style="display:none;">
+  <button id="buttondeconnect" class="btn btn-primary btn-lg" href="#deconnect" data-toggle="modal">D&eacute;connection</button>
+  </div>
 </div>
   
 
@@ -108,22 +123,23 @@ $(document).ready(function() {
       <div class="modal-body">
         <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal">
+            <form data-toggle="validator"class="form-horizontal">
             <fieldset>
             <!-- Sign In Form -->
             <!-- Text input-->
             <div class="control-group">
               <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="email" name="email" type="text" class="form-control" placeholder="Email" class="input-medium" required="">
+                <input id="email" name="email" type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email" data-error="Adresse mail non valide" class="input-medium" required="">
               </div>
+			  <div class="help-block with-errors"></div>
             </div>
 
             <!-- Password input-->
             <div class="control-group">
               <label class="control-label" for="passwordinput"></label>
               <div class="controls">
-                <input id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="Mot de passe" class="input-medium">
+                <input id="passwordinput" name="passwordinput" class="form-control" type="password" data-minlength="6" placeholder="Mot de passe" class="input-medium">
               </div>
             </div>
 
@@ -149,15 +165,16 @@ $(document).ready(function() {
             </form>
         </div>
         <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal" name="signin" novalidate>
+            <form id="myForm" data-toggle="validator" class="form-horizontal" name="signin" novalidate >
             <fieldset>
             <!-- Sign Up Form -->
             <!-- Text input-->
             <div class="control-group">
               <label class="control-label" for="Email"></label>
               <div class="controls">
-                <input id="Email" name="Email" class="form-control" type="text" placeholder="Email" class="input-large" required="">
+                <input id="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" "name="Email" class="form-control" data-error="Adresse mail non valide" type="text" placeholder="Email" class="input-large" required="">
               </div>
+			  <div class="help-block with-errors"></div>
             </div>
             
             <!-- Text input-->
@@ -170,10 +187,10 @@ $(document).ready(function() {
             
             <!-- Password input-->
             <div class="control-group">
-              <label class="control-label" for="password"></label>
+              <label for="Inputpassword"class="control-label" for="password"></label>
               <div class="controls">
-                <input id="password" name="password" class="form-control" type="password" placeholder="Mot de passe" class="input-large" required="">
-                <em>1-8</em>
+                <input id="Inputpassword" name="password" class="form-control" data-minlength="6" type="password" placeholder="Mot de passe" class="input-large" required>
+                <span class="help-block">6 charact&egrave;res minimum</span>
               </div>
             </div>
             
@@ -181,21 +198,19 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="reenterpassword"></label>
               <div class="controls">
-                <input id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="Re Mot de passe" class="input-large" required="">
+                <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#Inputpassword" data-match-error="Mots de passe non confirm&eacute;" placeholder="Confirmation" required>
+				<div class="help-block with-errors"></div>
               </div>
             </div>
             
             <!-- Multiple Radios (inline) -->
             <br>
-            <div class="control-group">
-              <label class="control-label" for="humancheck">Contr&ocirc;le de validation:</label>
-              <div class="controls">
-                <label class="radio inline" for="humancheck-0">
-                  <input type="radio" name="humancheck" id="humancheck-0" value="robot" checked="checked">Je suis un robot.</label>
-                <label class="radio inline" for="humancheck-1">
-                  <input type="radio" name="humancheck" id="humancheck-1" value="human">Je suis un humain.</label>
-              </div>
-            </div>
+			<div class="control-group">
+				<label>
+					<input type="checkbox" required/> Je suis un humain.
+				</label>
+				<span class="help-block">Confirmez que vous &ecirc;tes un humain</span>
+			</div>
             
             <!-- Button -->
             <div class="control-group">
