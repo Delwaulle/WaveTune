@@ -28,8 +28,9 @@ public class Synchronisation {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Musique> getAllMusique(User user){
-		return musiqueDao.getAllMusic(user.getId());
+	@Path("music/{id}")
+	public List<Musique> getAllMusique(@PathParam("id") int id){
+		return musiqueDao.getAllMusic(id);
 	}
 
 	@GET
