@@ -6,10 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -23,22 +27,43 @@ public class MusiqueResource {
 	private final UserDao userDao=App.dbi.open(UserDao.class);
 	private final MusiqueDao musiqueDao=App.dbi.open(MusiqueDao.class);
 
-	/*@POST
-	public Response uploadMusique(){
-		String path="rsc/Eminem - We Made You"+".mp3";
-		AudioParser ap=new AudioParser(path);
-		String title=ap.getTitle();
-		String artiste=ap.getArtiste();
-		String genre=ap.getGenre();
-		String album=ap.getAlbum();
-		String img="rsc"+File.separator+"logo.png";
-		musiqueDao.insertMusique(1, title, album, new Date().toString(), path, artiste, genre, img);
 
-		return Response.status(Response.Status.ACCEPTED).build();
-		//return Response.status(Response.Status.CONFLICT).build();
 
-	}*/
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("all/{pseudo}")
+	public List<Musique> getAllMusique(@PathParam("pseudo") String pseudo){
+		return musiqueDao.getAllMusicByPseudo(pseudo);
+	}
 
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("album/{pseudo}&{album}")
+	public List<Musique> getAlbum(@PathParam("pseudo") String pseudo,@PathParam("album") String album){
+		return musiqueDao.getAlbumByPseudo(pseudo, album);
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("artiste/{pseudo}&{artiste}")
+	public List<Musique> getArtiste(@PathParam("pseudo") String pseudo,@PathParam("artiste") String artiste){
+		return musiqueDao.getArtisteByPseudo(pseudo,artiste);
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("album/all/{pseudo}")
+	public List<String> getAllAlbum(@PathParam("pseudo") String pseudo){
+		return musiqueDao.getAllAlbum(pseudo);
+	}
+
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("artiste/all/{pseudo}")
+	public List<String> getAllArtiste(@PathParam("pseudo") String pseudo){
+		return musiqueDao.getAllArtiste(pseudo);
+	}
 
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
