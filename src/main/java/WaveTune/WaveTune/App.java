@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import org.glassfish.jersey.filter.LoggingFilter;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.skife.jdbi.v2.DBI;
 import org.sqlite.SQLiteDataSource;
 
@@ -18,6 +20,9 @@ public class App extends Application{
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> s = new HashSet<Class<?>>();
 		s.add(UserResource.class);
+		s.add(MultiPartFeature.class);
+		s.add(LoggingFilter.class);
+		s.add(MusiqueResource.class);
 		return s;
 	}
 
