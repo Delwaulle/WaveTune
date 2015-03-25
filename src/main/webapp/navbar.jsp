@@ -2,25 +2,38 @@
 <script src="bootstrap/js/validator.js"></script>
 <script src="cookie.js"></script>
 <script>
+window.onload = function(){
+	var login = readCookie("pseudo");
+	if (login != null){
+		$("#buttonsignin").empty();
+		$("<div class='btn-group'><button class='btn'>Bienvenue "+login+"</button><button class='btn dropdown-toggle' data-toggle='dropdown'> <span class='caret'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
+	}
+}
+</script>
+<script>
+	function deconnect(){
+		eraseCookie("pseudo");
+		window.location.reload();
+		}
+</script>
+<script>
 $(document).ready(function() {
 		$('#bsignin').click(function (event) {
-
 			$.ajax({
-
 			url: "http://localhost:8080/v1/user/connection",
-
 			data: JSON.stringify({"email" : $("#email").val(),"password" : $("#passwordinput").val()}),
-
 			type: "POST",
-
 			dataType : "json",
 			contentType: "application/json",
-
 			success: function( json ) {
 				alert( json.password );
-				createCookie("pseudo", json.pseudo, 7);
+				createCookie("pseudo", json.pseudo, 30);
+				var deconnect = document.getElementById('deconnect');
+				var myModal = document.getElementById('myModal');
 				$("#buttonsignin").empty();
-				$("<p>" +json.password+"</p>").appendTo("#buttonsignin");
+				$("<div class='btn-group'><button class='btn'>Bienvenue "+json.pseudo+"</button><button class='btn dropdown-toggle' data-toggle='dropdown'> <span class='caret'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");
+				$('#myModal').removeClass('fade');
+				$('#myModal').modal('hide');
 			},
 			error: function( xhr, status, errorThrown ) {
 			alert( "Sorry, there was a problem!" );
@@ -28,7 +41,6 @@ $(document).ready(function() {
 			console.log( "Status: " + status );
 			console.dir( xhr );
 			},
-
 			complete: function( xhr, status ) {
 			alert( "The request is complete!" );
 			}
@@ -69,17 +81,8 @@ $(document).ready(function() {
 			});
 		});
 	}); // end document.ready
+</script>
 
-</script>
-<script>
-	var login = readCookie("pseudo");
-	if(login != null)
-		$("#buttonsignin").empty();
-		$("<p>" +login+"</p>).appendTo("#buttonsignin");
-		$("#deconnect").style.display = "";
-	else
-		&(<button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>).appendTo("#buttonsignin");
-</script>
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -100,15 +103,10 @@ $(document).ready(function() {
 	<form class="navbar-form navbar-right" role="sign">
                     
 <!-- Button trigger modal -->
-
 <div id="buttonsignin">
   <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>
-  <div id"deconnect" style="display:none;">
-  <button id="buttondeconnect" class="btn btn-primary btn-lg" href="#deconnect" data-toggle="modal">D&eacute;connection</button>
-  </div>
 </div>
   
-
 <!-- Modal -->
 <div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
@@ -123,7 +121,7 @@ $(document).ready(function() {
       <div class="modal-body">
         <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade active in" id="signin">
-            <form data-toggle="validator"class="form-horizontal">
+            <div  class="form-horizontal">
             <fieldset>
             <!-- Sign In Form -->
             <!-- Text input-->
@@ -134,7 +132,6 @@ $(document).ready(function() {
               </div>
 			  <div class="help-block with-errors"></div>
             </div>
-
             <!-- Password input-->
             <div class="control-group">
               <label class="control-label" for="passwordinput"></label>
@@ -142,18 +139,6 @@ $(document).ready(function() {
                 <input id="passwordinput" name="passwordinput" class="form-control" type="password" data-minlength="6" placeholder="Mot de passe" class="input-medium">
               </div>
             </div>
-
-            <!-- Multiple Checkboxes (inline) -->
-            <div class="control-group">
-              <label class="control-label" for="rememberme"></label>
-              <div class="controls">
-                <label class="checkbox inline" for="rememberme-0">
-                  <input type="checkbox" name="rememberme" id="rememberme-0" value="Remember me">
-                  Se souvenir de moi
-                </label>
-              </div>
-            </div>
-
             <!-- Button -->
             <div class="control-group">
               <label class="control-label" for="signin"></label>
@@ -162,10 +147,10 @@ $(document).ready(function() {
               </div>
             </div>
             </fieldset>
-            </form>
+            </div>
         </div>
         <div class="tab-pane fade" id="signup">
-            <form id="myForm" data-toggle="validator" class="form-horizontal" name="signin" novalidate >
+            <div id="myForm" class="form-horizontal" name="signin" novalidate >
             <fieldset>
             <!-- Sign Up Form -->
             <!-- Text input-->
@@ -220,7 +205,7 @@ $(document).ready(function() {
               </div>
             </div>
             </fieldset>
-            </form>
+            </div>
       </div>
     </div>
       </div>
