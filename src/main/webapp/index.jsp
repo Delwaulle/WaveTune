@@ -48,7 +48,7 @@
 				<img src="images/about.png" class="img-about img-responsive" alt="About image"/>
 			</div>
 			<div class="col-md-6">
-				<h2 class="text-center">&Agrave; propos</h2>
+				<h3 class="text-center">&Agrave; propos</h3>
 				<p class="text-justify">WaveTune est le gestionnaire musical de votre biblioth&egrave;que en ligne. Il vous permet d'&eacute;couter votre musique que ce soit sur votre PC ou votre appareil Android. Cr&eacute;&eacute; par un groupe d'&eacute;tudiant de l'IUT A Lille 1, WaveTune est la meilleure solution pour correspondre &agrave; vos besoins.</p>
 				
 			</div>
@@ -57,7 +57,7 @@
 		
 		<div class="row padding" id="contact">
 			<div class="col-md-6">
-				<h2 class="text-center">Contact</h2>
+				<h3 class="text-center">Contact</h3>
 				<p class="text-justify"> Nous contacter : <br> wavetune@gmail.com <br> Adresse : <br> IUT A Lille 1 - Boulevard Langevin, 59653 Villeneuve-d'Ascq</p>
 				
 			</div>

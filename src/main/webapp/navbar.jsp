@@ -2,7 +2,6 @@
 <script src="bootstrap/js/jquery.backstretch.min.js"></script>
 <script src="bootstrap/js/validator.js"></script>
 <script src="cookie.js"></script>
-<script src="/bootstrap/js/bootstrap.min.js "></script>
 <script>
 window.onload = function(){
 	var login = readCookie("pseudo");
@@ -28,7 +27,6 @@ $(document).ready(function() {
 			dataType : "json",
 			contentType: "application/json",
 			success: function( json ) {
-				alert( json.password );
 				createCookie("pseudo", json.pseudo, 30);
 				var deconnect = document.getElementById('deconnect');
 				var myModal = document.getElementById('myModal');
@@ -56,13 +54,14 @@ $(document).ready(function() {
 		  	// Using the core $.ajax() method
 			$.ajax({
 			// The URL for the request
-			url: "http://localhost:8080/v1/user/",
+			url: "http://localhost:8080/v1/user/inscription",
 			// The data to send (will be converted to a query string)
-			data: JSON.stringify({'email' : $("#Email").val(),'pseudo' : $("#userid").val,'password' : $("#passwordinput").val()}),
+			data: JSON.stringify({"email" : $("#Email").val(),"pseudo" : $("#pseudo").val(),"password" : $("#inputPasswordConfirm").val()}),
 			// Whether this is a POST or GET request
 			type: "POST",
 			// The type of data we expect back
 			dataType : "json",
+			contentType: "application/json",
 			// Code to run if the request succeeds;
 			// the response is passed to the function
 			success: function( json ) {
@@ -168,7 +167,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="userid" name="userid" class="form-control" type="text" placeholder="Pseudo" class="input-large" required="">
+                <input id="pseudo" name="userid" class="form-control" type="text" placeholder="Pseudo" class="input-large" required="">
               </div>
             </div>
             
@@ -189,15 +188,7 @@ $(document).ready(function() {
 				<div class="help-block with-errors"></div>
               </div>
             </div>
-            
-            <!-- Multiple Radios (inline) -->
-            <br>
-			<div class="control-group">
-				<label>
-					<input type="checkbox" required/> Je suis un humain.
-				</label>
-				<span class="help-block">Confirmez que vous &ecirc;tes un humain</span>
-			</div>
+        
             
             <!-- Button -->
             <div class="control-group">

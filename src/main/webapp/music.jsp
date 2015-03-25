@@ -24,27 +24,20 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
   </head>
 
   <body>
-  <script>
-window.onload = function(){
-	alert("hello");
-	isConnected();
-}
-</script>
-  <script>
-  function isConnected(){
-	var login = readCookie("pseudo");
-	if (login == null){
-			window.location.replace("http://localhost:8080/sorry.jsp");
-	}
-	}
-  </script>
+	<div>
 	<%@include file='player.jsp' %>
-  
-	<%@include file='upload.jsp' %>
+	</div>
+		<form id="uploadForm" enctype="multipart/form-data" action="http://localhost:8080/v1/music" target="uploadFrame" method="post">
+			<label for="uploadFile">Mp3</label>
+			<input id="uploadFile" name="uploadFile" type="file" />
+			<input id="user" name="user" type="hidden" value="admin"/>
+			<br /><br />
+			<input id="uploadSubmit" type="submit" value="Upload !" />
+		</form>
+		<iframe style="display:none;" id="uploadFrame" name="uploadFrame"></iframe>
 
 	<%@include file='navbar.jsp' %>
 	

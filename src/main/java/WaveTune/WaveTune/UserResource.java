@@ -24,11 +24,14 @@ public class UserResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/inscription")
 	public User createUser(User user) {
 		System.out.println("CREATE USER");
 		Date date = new Date();
 		String dateInscription =date.toString();
 		if(userDao.selectPseudo(user.getPseudo())==null){
+			System.out.println("pas present bdd");
+			System.out.println("user : "+user.getPseudo()+" --- "+user.getPassword()+" --- "+user.getEmail());
 			userDao.insertUser(user.getPseudo(), user.getPassword(), user.getEmail(), dateInscription);
 			new File("directory"+File.separator+user.getPseudo()).mkdirs();
 			return user;

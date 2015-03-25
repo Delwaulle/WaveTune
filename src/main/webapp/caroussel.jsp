@@ -9,21 +9,21 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <a href="/"><img src="/images/caroussel1.gif" alt="Bienvenue"></a>
+      <a href="/"><img src="/images/caroussel1.jpg" alt="Bienvenue"></a>
       <div class="carousel-caption">
       <h3>Bienvenue sur WaveTune</h3>
 	  <p>Votre gestionnaire musical en ligne</p>
       </div>
     </div>
     <div class="item">
-      <a href="https://play.google.com/store/apps" target="_blank" ><img src="/images/caroussel2.gif" alt="T&eacute;l&eacute;chargez"></a>
+      <a href="https://play.google.com/store/apps" target="_blank" ><img src="/images/caroussel2.jpg" alt="T&eacute;l&eacute;chargez"></a>
       <div class="carousel-caption">
       <h3>T&eacute;l&eacute;chargez notre application</h3>
 	  <p>Disponible sur le Play Store</p>
       </div>
     </div>
     <div class="item">
-      <a href="https://www.paypal.com/fr/home" target="_blank" ><img src="/images/caroussel3.gif" alt="Contribuez"></a>
+      <a href="https://www.paypal.com/fr/home" target="_blank" ><img src="/images/caroussel3.png" alt="Contribuez"></a>
       <div class="carousel-caption">
       <h3>Contribuez au projet</h3>
 	  <p>Faites un don</p>
