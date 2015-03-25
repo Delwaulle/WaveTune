@@ -31,13 +31,9 @@
 
 	<%@include file='navbar.jsp' %>
 
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>WaveTune</h1>
-        <p class="lead">Ma musique</p>
-	  </div>
-	</div>
+    <%@include file='player.jsp' %>
+	
+	<%@include file='upload.jsp' %>
 
 	
 	<%@include file='footer.jsp' %>
