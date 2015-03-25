@@ -28,13 +28,25 @@
   </head>
 
   <body>
-
-	<%@include file='navbar.jsp' %>
-
-    <%@include file='player.jsp' %>
-	
+  <script>
+window.onload = function(){
+	alert("hello");
+	isConnected();
+}
+</script>
+  <script>
+  function isConnected(){
+	var login = readCookie("pseudo");
+	if (login == null){
+			window.location.replace("http://localhost:8080/sorry.jsp");
+	}
+	}
+  </script>
+	<%@include file='player.jsp' %>
+  
 	<%@include file='upload.jsp' %>
 
+	<%@include file='navbar.jsp' %>
 	
 	<%@include file='footer.jsp' %>
 
