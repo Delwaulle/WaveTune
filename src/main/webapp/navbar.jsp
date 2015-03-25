@@ -1,12 +1,14 @@
 <script src="bootstrap/js/jquery-2.1.3.js"></script>
+<script src="bootstrap/js/jquery.backstretch.min.js"></script>
 <script src="bootstrap/js/validator.js"></script>
 <script src="cookie.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js "></script>
 <script>
 window.onload = function(){
 	var login = readCookie("pseudo");
 	if (login != null){
 		$("#buttonsignin").empty();
-		$("<div class='btn-group'><button class='btn'>Bienvenue "+login+"</button><button class='btn dropdown-toggle' data-toggle='dropdown'> <span class='caret'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
+		$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+login+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
 	}
 }
 </script>
@@ -31,7 +33,7 @@ $(document).ready(function() {
 				var deconnect = document.getElementById('deconnect');
 				var myModal = document.getElementById('myModal');
 				$("#buttonsignin").empty();
-				$("<div class='btn-group'><button class='btn'>Bienvenue "+json.pseudo+"</button><button class='btn dropdown-toggle' data-toggle='dropdown'> <span class='caret'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");
+				$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+json.pseudo+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");
 				$('#myModal').removeClass('fade');
 				$('#myModal').modal('hide');
 			},
@@ -104,7 +106,7 @@ $(document).ready(function() {
                     
 <!-- Button trigger modal -->
 <div id="buttonsignin">
-  <button id="buttonsigninregister" class="btn btn-primary btn-lg" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>
+  <button id="buttonsigninregister" class="btn btn-primary" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Se connecter</button>
 </div>
   
 <!-- Modal -->

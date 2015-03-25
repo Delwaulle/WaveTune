@@ -35,29 +35,7 @@
 
       <div class="starter-template">
         <h1>WaveTune</h1>
-        <p class="lead">This is WaveTune.<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		<br> Simply and effective.
-		</p>
+        <%@include file='caroussel.jsp' %>
       </div>
 
 	
