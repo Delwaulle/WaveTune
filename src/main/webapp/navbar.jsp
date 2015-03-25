@@ -9,6 +9,12 @@ window.onload = function(){
 		$("#buttonsignin").empty();
 		$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+login+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
 	}
+	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp"){
+	
+	}
+	else {
+		document.location.href="http://localhost:8080/sorry.jsp"
+	}
 }
 </script>
 <script>
@@ -34,6 +40,13 @@ $(document).ready(function() {
 				$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+json.pseudo+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");
 				$('#myModal').removeClass('fade');
 				$('#myModal').modal('hide');
+				
+				if(document.location.href=="http://localhost:8080/"){
+					
+				}
+				if(document.location.href=="http://localhost:8080/sorry.jsp"){
+					document.location.href="http://localhost:8080/"
+				}
 			},
 			error: function( xhr, status, errorThrown ) {
 			alert( "Sorry, there was a problem!" );
@@ -93,7 +106,7 @@ $(document).ready(function() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/#">WaveTune</a>
+          <a class="navbar-brand" href="/">WaveTune</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">

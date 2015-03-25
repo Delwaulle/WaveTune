@@ -27,6 +27,15 @@
   </head>
 
   <body>
+  
+  <script>
+  function isConnected(){
+	var login = readCookie("pseudo");
+	if (login == null){
+			window.location.replace("http://localhost:8080/sorry.jsp");
+	}
+	}
+  </script>
 	<div>
 	<%@include file='player.jsp' %>
 	</div>
