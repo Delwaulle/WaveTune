@@ -27,6 +27,7 @@
   </head>
 
   <body>
+	<center>
   
   <script>
   function isConnected(){
@@ -64,5 +65,7 @@
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="bootstrap/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	
+	</center>
   </body> 
 </html>

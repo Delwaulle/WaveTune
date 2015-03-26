@@ -46,7 +46,7 @@ $(document).ready(function() {
 					$("#liste").empty();
 					for(var i=0;i<json.length;i++){
 						alert(json[i].url);
-						$("<span id='piste"+i+"' value ='"+json[i].url+"' name='"+i+"'>"+json[i].titre+" -- "+json[i].album+" -- "+json[i].artiste+"</span>").appendTo("#liste");	 	
+						$("<span id='piste"+i+"' value ='"+json[i].url+"' name='"+i+"'>"+json[i].titre+" -- "+json[i].album+" -- "+json[i].artiste+"</span><br>").appendTo("#liste");	 	
 						
 					}
 					
@@ -79,7 +79,7 @@ $(document).ready(function() {
 		var login = readCookie("pseudo");
 		//Extension de fichier 
 		dir = "../directory/"+login+"/";
-		ext = ".mp3";
+		ext = "";
 		
 		
 		alert(length);

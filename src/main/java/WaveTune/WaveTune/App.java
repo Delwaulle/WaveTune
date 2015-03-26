@@ -54,10 +54,10 @@ public class App extends Application{
 		}*/
 		String path="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+"03  Muse - Undisclosed Desires.mp3";
 		AudioParser ap=new AudioParser(path);
-		dbi.open(MusiqueDao.class).insertMusique(1, ap.getTitle(), ap.getAlbum(), new Date().toString(), "03  Muse - Undisclosed Desires.mp3", ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
+		dbi.open(MusiqueDao.class).insertMusique(1, ap.getTitle(), ap.getAlbum(), new Date().toString(), "03  Muse - Undisclosed Desires.mp3", ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png",path);
 
 		String path2="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+"Britney Spears - if You Seek Amy.mp3";
 		AudioParser ap2=new AudioParser(path2);
-		dbi.open(MusiqueDao.class).insertMusique(1, ap2.getTitle(), ap2.getAlbum(), new Date().toString(), "Britney Spears - if You Seek Amy.mp3", ap2.getArtiste(), ap2.getGenre(), "rsc"+File.separator+"logo.png");
+		dbi.open(MusiqueDao.class).insertMusique(1, ap2.getTitle(), ap2.getAlbum(), new Date().toString(), "Britney Spears - if You Seek Amy.mp3", ap2.getArtiste(), ap2.getGenre(), "rsc"+File.separator+"logo.png",path);
 	}
 }

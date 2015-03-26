@@ -120,7 +120,7 @@ public class MusiqueResource {
 		String img="rsc"+File.separator+"logo.png";
 		System.out.println(title + " -- "+ artiste + " -- "+ genre + " -- "+ album + " -- ");
 		System.out.println(userDao.selectPseudoById(pseudo));
-		musiqueDao.insertMusique(userDao.selectPseudoById(pseudo), title, album, new Date().toString(), url, artiste, genre, img);
+		musiqueDao.insertMusique(userDao.selectPseudoById(pseudo), title, album, new Date().toString(), url, artiste, genre, img,path);
 
 		return Response.status(Response.Status.ACCEPTED).build();
 

@@ -10,11 +10,11 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface MusiqueDao {
-	@SqlUpdate("CREATE TABLE IF NOT EXISTS musiques (id INTEGER PRIMARY KEY,user_id INTEGER, titre STRING, album TEXT, dateUpload STRING, url TEXT, artiste TEXT,genre TEXT, img TEXT,FOREIGN KEY (user_id) REFERENCES Persons(id))")
+	@SqlUpdate("CREATE TABLE IF NOT EXISTS musiques (id INTEGER PRIMARY KEY,user_id INTEGER, titre STRING, album TEXT, dateUpload STRING, url TEXT, artiste TEXT,genre TEXT, img TEXT,path TEXT,FOREIGN KEY (user_id) REFERENCES Persons(id))")
 	public void createTable();
 
-	@SqlUpdate("INSERT INTO musiques (user_id,titre,album,dateUpload,url,artiste,genre,img) VALUES (:user_id,:titre,:album,:dateUpload,:url,:artiste,:genre,:img)")
-	public void insertMusique(@Bind("user_id") int user_id,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img);
+	@SqlUpdate("INSERT INTO musiques (user_id,titre,album,dateUpload,url,artiste,genre,img,path) VALUES (:user_id,:titre,:album,:dateUpload,:url,:artiste,:genre,:img,:path)")
+	public void insertMusique(@Bind("user_id") int user_id,@Bind("titre") String titre, @Bind("album") String album, @Bind("dateUpload") String dateUpload, @Bind("url") String url, @Bind("artiste") String artiste, @Bind("genre") String genre,@Bind("img") String img,@Bind("path") String path);
 
 
 	@SqlQuery("SELECT * FROM musiques WHERE user_id=:user_id;")
@@ -42,7 +42,7 @@ public interface MusiqueDao {
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<String> getAllArtiste(@Bind("user_id") int user_id);
 
-	@SqlQuery("SELECT url FROM musiques WHERE id=:id;")
+	@SqlQuery("SELECT path FROM musiques WHERE id=:id;")
 	public String getPathMusic(@Bind("id")int id);
 
 	@SqlQuery("SELECT * FROM musiques where url=:url")
