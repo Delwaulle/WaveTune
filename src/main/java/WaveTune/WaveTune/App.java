@@ -43,15 +43,6 @@ public class App extends Application{
 		File dir =new File("src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+usr.getPseudo());
 		if(!dir.exists())
 			dir.mkdirs();
-		/*File[] tab=dir.listFiles();
-		for(int i=0;i<dir.length();i++){
-			System.out.println(tab[i]);
-			System.out.println(tab[i].getName());
-			String path="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+tab[i].getName();
-			AudioParser ap=new AudioParser(path);
-			System.out.println(path);
-			dbi.open(MusiqueDao.class).insertMusique(i, ap.getTitle(), ap.getAlbum(), new Date().toString(), tab[i].getName(), ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
-		}*/
 		String path="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+"03  Muse - Undisclosed Desires.mp3";
 		AudioParser ap=new AudioParser(path);
 		dbi.open(MusiqueDao.class).insertMusique(1, ap.getTitle(), ap.getAlbum(), new Date().toString(), "03  Muse - Undisclosed Desires.mp3", ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png",path);
