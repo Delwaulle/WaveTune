@@ -53,8 +53,10 @@
       </div>
 
     </div><!-- /.container -->
-	<div class="navbar navbar-fixed-bottom">
+	<div id="footer">
+    <div class="navbar-inner  navbar-fixed-bottom">
 	<%@include file='footer.jsp' %>
+	</div>
 	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

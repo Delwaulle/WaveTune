@@ -1,5 +1,6 @@
 body {
   padding-top: 50px;
+  padding-bottom: 70px;
 }
 .starter-template {
   padding: 40px 15px;
@@ -53,4 +54,13 @@ footer a:hover {
 .footer-nav li {
 		display : inline;
 		padding : 0px 10px;
+}
+
+.footer-container{
+	min-height:100%;
+}
+
+.footer-footer{
+	height:40px;
+	margin-top:-40px;
 }

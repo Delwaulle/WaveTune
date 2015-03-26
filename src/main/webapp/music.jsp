@@ -50,9 +50,8 @@
 
 	<%@include file='navbar.jsp' %>
 	
-	<div class="navbar navbar-fixed-bottom">
 	<%@include file='footer.jsp' %>
-	</div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
