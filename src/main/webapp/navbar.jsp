@@ -76,21 +76,21 @@ $(document).ready(function() {
 			var regexmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 			var regexpassword = /^.{6,15}$/i;
 			var Email = $("#Email").val();
-			var password = $("Inputpassword").val();
+			var password = $("#Inputpassword").val();
 			var passwordconfirm = $("#inputPasswordConfirm").val();
 			if($("#Email").val() == "" || $("#pseudo").val() == "" || $("#Inputpassword").val() == "" || $("#inputPasswordConfirm").val() == ""){
 				$("<br><div class='alert alert-danger'><p>Un des champs est vide !</p></div>").appendTo('.errorinscription');
 			}
-			if(regexmail.test(Email) == false){
+			else if(regexmail.test(Email) == false){
 				$("<br><div class='alert alert-danger'><p>Email non valide !</p></div>").appendTo('.errorinscription');
 			}
-			if(password != passwordconfirm){
+			else if(password != passwordconfirm){
 				$("<br><div class='alert alert-danger'><p>Les deux mots de passe sont diff&eacute;rents</p></div>").appendTo('.errorinscription');
 			}
-			if(regexpassword.test(password) == false){
+			else if(regexpassword.test(password) == false){
 				$("<br><div class='alert alert-danger'><p>Le mot de passe doit comporter entre 6 et 15 caract&egrave;res</p></div>").appendTo('.errorinscription');
 			}
-			if(regexpassword.test(passwordconfirm) == false){
+			else if(regexpassword.test(passwordconfirm) == false){
 				$("<br><div class='alert alert-danger'><p>Le mot de passe doit comporter entre 6 et 15 caract&egrave;res</p></div>").appendTo('.errorinscription');
 			}
 			else{
@@ -144,13 +144,11 @@ $(document).ready(function() {
 				}
 			},
 			error: function( xhr, status, errorThrown ) {
-			alert( "Sorry, there was a problem!" );
 			console.log( "Error: " + errorThrown );
 			console.log( "Status: " + status );
 			console.dir( xhr );
 			},
 			complete: function( xhr, status ) {
-			alert( "The request is complete!" );
 			}
 			});
 			});
@@ -251,17 +249,17 @@ $(document).ready(function() {
             
             <!-- Password input-->
             <div class="control-group">
-              <label for="Inputpassword"class="control-label" for="password"></label>
+              <label class="control-label"></label>
               <div class="controls">
-                <input id="Inputpassword" name="password" class="form-control"  type="password" placeholder="Mot de passe" class="input-large" >
+                <input id="Inputpassword" class="form-control"  type="password" placeholder="Mot de passe" class="input-large" >
               </div>
             </div>
             
             <!-- Text input-->
             <div class="control-group">
-              <label class="control-label" for="reenterpassword"></label>
+              <label class="control-label"></label>
               <div class="controls">
-                <input type="password" name="confirmpassword" class="form-control" id="inputPasswordConfirm"  placeholder="Confirmation">
+                <input id="inputPasswordConfirm" type="password"  class="form-control"   placeholder="Confirmation">
 				<div class="errorinscription"></div>
             </div>
         
