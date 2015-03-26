@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,35 +24,52 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	
   </head>
 
   <body>
-  
-  <script>
-  function isConnected(){
-	var login = readCookie("pseudo");
-	if (login == null){
-			window.location.replace("http://localhost:8080/sorry.jsp");
-	}
-	}
-  </script>
-	<div>
-	<%@include file='player.jsp' %>
-	</div>
-		<form id="uploadForm" enctype="multipart/form-data" action="http://localhost:8080/v1/music" target="uploadFrame" method="post">
-			<label for="uploadFile">Mp3</label>
-			<input id="uploadFile" name="uploadFile" type="file" />
-			<input id="user" name="user" type="hidden" value="admin"/>
-			<br /><br />
-			<input id="uploadSubmit" class="btn-primary" type="submit" value="Upload !" />
-		</form>
-		<iframe style="display:none;" id="uploadFrame" name="uploadFrame"></iframe>
 
 	<%@include file='navbar.jsp' %>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Profil</h1>
+	</div><!-- /.container -->
+       
+	 
+	<form>
+	<div class="form-group">
+    <label for="exampleInputEmail1">Modifier votre adresse email</label>
+    <input type="email" class="form-control" id="modifiermail1" placeholder="Email">
+	</div>
+	<div class="form-group">
+    <label for="exampleInputEmail1"></label>
+    <input type="email" class="form-control" id="modifiermail2" placeholder="Confirmation">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword1">Modifier votre mot de passe</label>
+		<input type="password" class="form-control" id="modifiermdp1" placeholder="Mot de passe actuel">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword1"></label>
+		<input type="password" class="form-control" id="modifiermdp2" placeholder="Nouveau mot de passe">
+	</div>
+
+	<div class="form-group">
+		<label for="exampleInputPassword1"></label>
+		<input type="password" class="form-control" id="modifiermdp3" placeholder="Confirmation">
+	</div>
+		<div class="text-center">
+	  <button type="submit" class="btn btn-primary btn-lg">Modifier</button>
+		</div>
+	</form>
+	
 	
 	<%@include file='footer.jsp' %>
 
 
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
