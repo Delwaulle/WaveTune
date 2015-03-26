@@ -1,7 +1,5 @@
 <script src="bootstrap/js/jquery-2.1.3.js"></script>
 <script src="cookie.js"></script>
-<script type="text/javascript" src="bootstrap/dist/js/bootstrapValidator.js"></script>
-<link rel="stylesheet" src="bootstrap/dist/css/bootstrapValidator.css"/>
 <script>
 window.onload = function(){
 	var login = readCookie("pseudo");
@@ -23,9 +21,15 @@ window.onload = function(){
 		window.location.reload();
 		}
 </script>
+
 <script>
 $(document).ready(function() {
-		$('#bsignin').click(function (event) {
+		$('#bsignin').click(function (event) {	
+			$('.errorconnect').empty();
+			if($("#email").val() == "" || $("#passwordinput").val() == ""){
+				$("<br><div class='alert alert-danger'><p>Adresse mail ou mot de passe vide!</p></div>").appendTo('.errorconnect');
+			}
+			else{
 			$.ajax({
 			url: "http://localhost:8080/v1/user/connection",
 			data: JSON.stringify({"email" : $("#email").val(),"password" : $("#passwordinput").val()}),
@@ -33,7 +37,10 @@ $(document).ready(function() {
 			dataType : "json",
 			contentType: "application/json",
 			success: function( json ) {
-				alert("connection");
+				if( json == null){
+					$("<br><div class='alert alert-danger'><p>Email ou mot de passe incorrect !</p></div>").appendTo('.errorconnect');
+				}
+				else{
 				createCookie("pseudo", json.pseudo, 30);
 				var deconnect = document.getElementById('deconnect');
 				var myModal = document.getElementById('myModal');
@@ -48,24 +55,45 @@ $(document).ready(function() {
 				if(document.location.href=="http://localhost:8080/sorry.jsp"){
 					document.location.href="http://localhost:8080/"
 				}
+				}
 			},
 			error: function( xhr, status, errorThrown ) {
-			alert( "Sorry, there was a problem!" );
 			console.log( "Error: " + errorThrown );
 			console.log( "Status: " + status );
 			console.dir( xhr );
 			},
 			complete: function( xhr, status ) {
-			alert( "The request is complete!" );
 			}
 			});
+			}
 		});
 	});
 	
 	
 	$(document).ready(function() {
 		$('#confirmsignup').click(function (event) {
-		  	// Using the core $.ajax() method
+			$('.errorinscription').empty();
+			var regexmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+			var regexpassword = /^.{6,15}$/i;
+			var Email = $("#Email").val();
+			var password = $("Inputpassword").val();
+			var passwordconfirm = $("#inputPasswordConfirm").val();
+			if($("#Email").val() == "" || $("#pseudo").val() == "" || $("#Inputpassword").val() == "" || $("#inputPasswordConfirm").val() == ""){
+				$("<br><div class='alert alert-danger'><p>Un des champs est vide !</p></div>").appendTo('.errorinscription');
+			}
+			if(regexmail.test(Email) == false){
+				$("<br><div class='alert alert-danger'><p>Email non valide !</p></div>").appendTo('.errorinscription');
+			}
+			if(password != passwordconfirm){
+				$("<br><div class='alert alert-danger'><p>Les deux mots de passe sont diff&eacute;rents</p></div>").appendTo('.errorinscription');
+			}
+			if(regexpassword.test(password) == false){
+				$("<br><div class='alert alert-danger'><p>Le mot de passe doit comporter entre 6 et 15 caract&egrave;res</p></div>").appendTo('.errorinscription');
+			}
+			if(regexpassword.test(passwordconfirm) == false){
+				$("<br><div class='alert alert-danger'><p>Le mot de passe doit comporter entre 6 et 15 caract&egrave;res</p></div>").appendTo('.errorinscription');
+			}
+			else{
 			$.ajax({
 			// The URL for the request
 			url: "http://localhost:8080/v1/user/inscription",
@@ -79,25 +107,20 @@ $(document).ready(function() {
 			// Code to run if the request succeeds;
 			// the response is passed to the function
 			success: function( json ) {
-				//cookie
 				$('#myModal').removeClass('fade');
 				$('#myModal').modal('hide');
 			},
 			// Code to run if the request fails; the raw request and
 			// status codes are passed to the function
 			error: function( xhr, status, errorThrown ) {
-			alert( "Sorry, there was a problem!" );
 			console.log( "Error: " + errorThrown );
 			console.log( "Status: " + status );
 			console.dir( xhr );
 			},
 			// Code to run regardless of success or failure
 			complete: function( xhr, status ) {
-			alert( "The request is complete!" );
 			}
-			}).done(function(){
-				alert("done");
-				
+			}).done(function(){				
 				$.ajax({
 			url: "http://localhost:8080/v1/user/connection",
 			data: JSON.stringify({"email" : $("#Email").val(),"password" : $("#inputPasswordConfirm").val()}),
@@ -105,7 +128,6 @@ $(document).ready(function() {
 			dataType : "json",
 			contentType: "application/json",
 			success: function( json ) {
-				alert("coooo");
 				createCookie("pseudo", json.pseudo, 30);
 				var deconnect = document.getElementById('deconnect');
 				var myModal = document.getElementById('myModal');
@@ -131,10 +153,12 @@ $(document).ready(function() {
 			alert( "The request is complete!" );
 			}
 			});
-				
 			});
+			}
+			
 		});
-	}); // end document.ready
+	}); 
+	// end document.ready
 </script>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -155,7 +179,7 @@ $(document).ready(function() {
             <li><a href="/#contact">Contact</a></li>
 			<li><a href="/download.jsp">T&eacute;l&eacute;chargement</a></li>
           </ul>
-	<form class="navbar-form navbar-right" role="sign">
+	<div class="navbar-form navbar-right text-center" role="sign">
                     
 <!-- Button trigger modal -->
 <div id="buttonsignin">
@@ -183,16 +207,16 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="email" name="email" type="text" class="form-control"  placeholder="Email" data-error="Adresse mail non valide" class="input-medium" required="">
+                <input id="email" name="email" type="text" class="form-control"  placeholder="Email"  class="input-medium" >
               </div>
-			  <div class="help-block with-errors"></div>
-            </div>
+
             <!-- Password input-->
             <div class="control-group">
               <label class="control-label" for="passwordinput"></label>
               <div class="controls">
                 <input id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="Mot de passe" class="input-medium">
               </div>
+			  <div class="errorconnect"></div>
             </div>
             <!-- Button -->
             <div class="control-group">
@@ -212,7 +236,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="Email"></label>
               <div class="controls">
-                <input id="Email"  "name="Email" class="form-control" data-error="Adresse mail non valide" type="text" placeholder="Email" class="input-large" required="">
+                <input id="Email"  "name="Email" class="form-control"  type="text" placeholder="Email" class="input-large" required>
               </div>
 			  <div class="help-block with-errors"></div>
             </div>
@@ -221,7 +245,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="pseudo" name="userid" class="form-control" type="text" placeholder="Pseudo" class="input-large" required="">
+                <input id="pseudo" name="userid" class="form-control" type="text" placeholder="Pseudo" class="input-large" >
               </div>
             </div>
             
@@ -229,8 +253,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label for="Inputpassword"class="control-label" for="password"></label>
               <div class="controls">
-                <input id="Inputpassword" name="password" class="form-control"  type="password" placeholder="Mot de passe" class="input-large" required>
-                <span class="help-block">6 charact&egrave;res minimum</span>
+                <input id="Inputpassword" name="password" class="form-control"  type="password" placeholder="Mot de passe" class="input-large" >
               </div>
             </div>
             
@@ -238,9 +261,8 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="reenterpassword"></label>
               <div class="controls">
-                <input type="password" class="form-control" id="inputPasswordConfirm"  placeholder="Confirmation" required>
-				<div class="help-block with-errors"></div>
-              </div>
+                <input type="password" name="confirmpassword" class="form-control" id="inputPasswordConfirm"  placeholder="Confirmation">
+				<div class="errorinscription"></div>
             </div>
         
             
@@ -263,6 +285,7 @@ $(document).ready(function() {
       </div>
     </div>
   </div>
+</div>
 </div>
         </div><!--/.nav-collapse -->
       </div>
