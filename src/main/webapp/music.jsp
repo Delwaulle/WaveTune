@@ -37,10 +37,10 @@
 	}
 	}
 	
-	function upload(){
+	/*function upload(){
 		alert("Votre fichier a bien été uploadé");
 		window.location.reload();
-	}
+	}*/
   </script>
 	<div>
 	<%@include file='player.jsp' %>
