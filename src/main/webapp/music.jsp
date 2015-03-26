@@ -44,7 +44,7 @@
 			<input id="uploadFile" name="uploadFile" type="file" />
 			<input id="user" name="user" type="hidden" value="admin"/>
 			<br /><br />
-			<input id="uploadSubmit" class="btn-primary" type="submit" value="Upload !" />
+			<input id="uploadSubmit" class="btn btn-primary" type="submit" value="Upload !" />
 		</form>
 		<iframe style="display:none;" id="uploadFrame" name="uploadFrame"></iframe>
 
