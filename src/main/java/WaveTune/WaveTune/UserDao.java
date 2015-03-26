@@ -21,8 +21,8 @@ public interface UserDao {
 	@SqlUpdate("INSERT INTO users (pseudo,password,email,type,dateInscription) VALUES(:pseudo,:password,:email,'standard user',:dateInscription)")
 	public void insertUser(@Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("email") String email, @Bind("dateInscription") String dateInscription);
 
-	@SqlUpdate("UPDATE users SET pseudo=:pseudo,password=:password,email=:email,type=:type,dateInscription:dateInscription) where id=:id")
-	public void updateUser(@Bind("id") int id, @Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("email") String email, @Bind("type") String type, @Bind("dateInscription") String dateInscription);
+	@SqlUpdate("UPDATE users SET password=:password,email=:email) where pseudo=:pseudo")
+	public void updateUser( @Bind("pseudo") String pseudo, @Bind("password") String password, @Bind("email") String email);
 
 	@SqlUpdate("UPDATE users SET des=:des where id=:id")
 	public void updateProfilDes(@Bind("id") int id, @Bind("des") String des);

@@ -12,7 +12,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -99,18 +98,13 @@ public class UserResource {
 	}
 
 	@PUT
-	@Consumes(MediaType.TEXT_PLAIN)
-	@Path("{id}")
-	public Response updateUser(@PathParam("id") int id,
-			User user) {
-		User oldUser = find(id);
-		System.out.println("Should update user with id: "+id
-				+" ("+oldUser+") to " +user);
-		if (user == null) {
-			throw new WebApplicationException(404);
-		}
-		oldUser.setPseudo(user.getPseudo());
-		return Response.status(200).entity(oldUser).build();
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update")
+	public Response updateUser(User user) {
+		System.out.println("update user ");
+		System.out.println(user.getEmail()+" -- "+user.getPassword());
+		userDao.updateUser(user.getPseudo(), user.getPassword(), user.getEmail());
+		return Response.status(200).entity(user).build();
 	}
 
 	@POST

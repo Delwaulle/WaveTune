@@ -9,7 +9,7 @@ window.onload = function(){
 		$("#buttonsignin").empty();
 		$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+login+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
 	}
-	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp"){
+	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact"){
 	
 	}
 	else {
@@ -79,6 +79,8 @@ $(document).ready(function() {
 			// the response is passed to the function
 			success: function( json ) {
 				//cookie
+				$('#myModal').removeClass('fade');
+				$('#myModal').modal('hide');
 			},
 			// Code to run if the request fails; the raw request and
 			// status codes are passed to the function
@@ -92,6 +94,43 @@ $(document).ready(function() {
 			complete: function( xhr, status ) {
 			alert( "The request is complete!" );
 			}
+			}).done(function(){
+				alert("done");
+				
+				$.ajax({
+			url: "http://localhost:8080/v1/user/connection",
+			data: JSON.stringify({"email" : $("#Email").val(),"password" : $("#inputPasswordConfirm").val()}),
+			type: "POST",
+			dataType : "json",
+			contentType: "application/json",
+			success: function( json ) {
+				alert("coooo");
+				createCookie("pseudo", json.pseudo, 30);
+				var deconnect = document.getElementById('deconnect');
+				var myModal = document.getElementById('myModal');
+				$("#buttonsignin").empty();
+				$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+json.pseudo+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='#'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");
+				$('#myModal').removeClass('fade');
+				$('#myModal').modal('hide');
+				
+				if(document.location.href=="http://localhost:8080/"){
+					
+				}
+				if(document.location.href=="http://localhost:8080/sorry.jsp"){
+					document.location.href="http://localhost:8080/"
+				}
+			},
+			error: function( xhr, status, errorThrown ) {
+			alert( "Sorry, there was a problem!" );
+			console.log( "Error: " + errorThrown );
+			console.log( "Status: " + status );
+			console.dir( xhr );
+			},
+			complete: function( xhr, status ) {
+			alert( "The request is complete!" );
+			}
+			});
+				
 			});
 		});
 	}); // end document.ready
