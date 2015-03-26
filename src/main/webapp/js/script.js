@@ -58,7 +58,6 @@ $(document).ready(function() {
 				console.dir( xhr );
 				},
 				complete: function( xhr, status ) {
-				alert( "The request is complete!" );
 				}
 			});
 		}
