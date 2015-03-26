@@ -28,6 +28,44 @@
   </head>
 
   <body>
+  <script src="bootstrap/js/jquery-2.1.3.js"></script>
+  <script>
+  $(document).ready(function() {
+	$('#modifier').click(function (event) {
+		  // Using the core $.ajax() method
+		$.ajax({
+			// The URL for the request
+			url: "http://localhost:8080/v1/user/update",
+			// The data to send (will be converted to a query string)
+			data: JSON.stringify({"email" : $("#modifiermail2").val(),"pseudo" : readCookie("pseudo"),"password" : $("#modifiermdp3").val()}),
+			// Whether this is a POST or GET request
+			type: "PUT",
+			// The type of data we expect back
+			dataType : "json",
+			contentType: "application/json",
+			// Code to run if the request succeeds;
+			// the response is passed to the function
+			success: function( json ) {
+				alert("modif");
+				document.location.href="http://localhost:8080/";
+			},
+			// Code to run if the request fails; the raw request and
+			// status codes are passed to the function
+			error: function( xhr, status, errorThrown ) {
+			alert( "Sorry, there was a problem!" );
+				console.log( "Error: " + errorThrown );
+				console.log( "Status: " + status );
+				console.dir( xhr );
+			},
+			// Code to run regardless of success or failure
+			complete: function( xhr, status ) {
+			alert( "The request is complete!" );
+			}
+			});
+		});
+	});
+  
+  </script>
 
 	<%@include file='navbar.jsp' %>
 
@@ -61,7 +99,7 @@
 		<input type="password" class="form-control" id="modifiermdp3" placeholder="Confirmation">
 	</div>
 		<div class="text-center">
-	  <button type="submit" class="btn btn-primary btn-lg">Modifier</button>
+	  <button id="modifier" class="btn btn-primary btn-lg">Modifier</button>
 		</div>
 	</form>
 	

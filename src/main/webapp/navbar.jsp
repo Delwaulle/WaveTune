@@ -13,7 +13,7 @@ window.onload = function(){
 	
 	}
 	else {
-		document.location.href="http://localhost:8080/sorry.jsp"
+		document.location.href="http://localhost:8080/sorry.jsp";
 	}
 }
 </script>
