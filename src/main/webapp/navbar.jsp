@@ -1,5 +1,6 @@
 <script src="bootstrap/js/jquery-2.1.3.js"></script>
 <script src="cookie.js"></script>
+<script src="bootstrap/js/md5.js"></script>
 <script>
 window.onload = function(){
 	var login = readCookie("pseudo");
@@ -32,7 +33,7 @@ $(document).ready(function() {
 			else{
 			$.ajax({
 			url: "http://localhost:8080/v1/user/connection",
-			data: JSON.stringify({"email" : $("#email").val(),"password" : $("#passwordinput").val()}),
+			data: JSON.stringify({"email" : $("#email").val(),"password" : CryptoJS.MD5($("#passwordinput").val()).toString()}),
 			type: "POST",
 			dataType : "json",
 			contentType: "application/json",
@@ -98,7 +99,7 @@ $(document).ready(function() {
 			// The URL for the request
 			url: "http://localhost:8080/v1/user/inscription",
 			// The data to send (will be converted to a query string)
-			data: JSON.stringify({"email" : $("#Email").val(),"pseudo" : $("#pseudo").val(),"password" : $("#inputPasswordConfirm").val()}),
+			data: JSON.stringify({"email" : $("#Email").val(),"pseudo" : $("#pseudo").val(),"password" : CryptoJS.MD5($("#inputPasswordConfirm").val()).toString()}),
 			// Whether this is a POST or GET request
 			type: "POST",
 			// The type of data we expect back
@@ -123,7 +124,7 @@ $(document).ready(function() {
 			}).done(function(){				
 				$.ajax({
 			url: "http://localhost:8080/v1/user/connection",
-			data: JSON.stringify({"email" : $("#Email").val(),"password" : $("#inputPasswordConfirm").val()}),
+			data: JSON.stringify({"email" : $("#Email").val(),"password" : CryptoJS.MD5($("#inputPasswordConfirm").val()).toString()}),
 			type: "POST",
 			dataType : "json",
 			contentType: "application/json",
