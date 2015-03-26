@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="item">
-      <a href="https://play.google.com/store/apps" target="_blank" ><img src="/images/caroussel2.jpg" alt="T&eacute;l&eacute;chargez"></a>
+      <a href="http://localhost:8080/download.jsp" target="_blank" ><img src="/images/caroussel2.jpg" alt="T&eacute;l&eacute;chargez"></a>
       <div class="carousel-caption">
       <h3>T&eacute;l&eacute;chargez notre application</h3>
 	  <p>Disponible sur le Play Store</p>
