@@ -29,7 +29,11 @@
 
   <body>
   <script src="bootstrap/js/jquery-2.1.3.js"></script>
- 
+	<script>
+	function download() {
+		$("#dl").delay(1000).append('<iframe width="1" height="1" frameborder="0" src="download/WaveTune.apk"></iframe>'); 
+	};
+	</script>
 
 	<%@include file='navbar.jsp' %>
 
@@ -41,8 +45,12 @@
        
 	 
 	
-	<div class="text-center">
-	  <button id="modifier" class="btn btn-primary btn-lg">T&eacute;l&eacute;charger</button>
+	<div   class="text-center">
+	  <button id="modifier" onclick="download()" class="btn btn-primary btn-lg">T&eacute;l&eacute;charger</button>
+	</div>
+	
+	<div id="dl">
+	
 	</div>
 	
 	
