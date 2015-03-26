@@ -1,7 +1,7 @@
 <script src="bootstrap/js/jquery-2.1.3.js"></script>
-<script src="bootstrap/js/jquery.backstretch.min.js"></script>
-<script src="bootstrap/js/validator.js"></script>
 <script src="cookie.js"></script>
+<script type="text/javascript" src="bootstrap/dist/js/bootstrapValidator.js"></script>
+<link rel="stylesheet" src="bootstrap/dist/css/bootstrapValidator.css"/>
 <script>
 window.onload = function(){
 	var login = readCookie("pseudo");
@@ -183,7 +183,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="userid"></label>
               <div class="controls">
-                <input id="email" name="email" type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email" data-error="Adresse mail non valide" class="input-medium" required="">
+                <input id="email" name="email" type="text" class="form-control"  placeholder="Email" data-error="Adresse mail non valide" class="input-medium" required="">
               </div>
 			  <div class="help-block with-errors"></div>
             </div>
@@ -191,7 +191,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="passwordinput"></label>
               <div class="controls">
-                <input id="passwordinput" name="passwordinput" class="form-control" type="password" data-minlength="6" placeholder="Mot de passe" class="input-medium">
+                <input id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="Mot de passe" class="input-medium">
               </div>
             </div>
             <!-- Button -->
@@ -212,7 +212,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="Email"></label>
               <div class="controls">
-                <input id="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" "name="Email" class="form-control" data-error="Adresse mail non valide" type="text" placeholder="Email" class="input-large" required="">
+                <input id="Email"  "name="Email" class="form-control" data-error="Adresse mail non valide" type="text" placeholder="Email" class="input-large" required="">
               </div>
 			  <div class="help-block with-errors"></div>
             </div>
@@ -229,7 +229,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label for="Inputpassword"class="control-label" for="password"></label>
               <div class="controls">
-                <input id="Inputpassword" name="password" class="form-control" data-minlength="6" type="password" placeholder="Mot de passe" class="input-large" required>
+                <input id="Inputpassword" name="password" class="form-control"  type="password" placeholder="Mot de passe" class="input-large" required>
                 <span class="help-block">6 charact&egrave;res minimum</span>
               </div>
             </div>
@@ -238,7 +238,7 @@ $(document).ready(function() {
             <div class="control-group">
               <label class="control-label" for="reenterpassword"></label>
               <div class="controls">
-                <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#Inputpassword" data-match-error="Mots de passe non confirm&eacute;" placeholder="Confirmation" required>
+                <input type="password" class="form-control" id="inputPasswordConfirm"  placeholder="Confirmation" required>
 				<div class="help-block with-errors"></div>
               </div>
             </div>
