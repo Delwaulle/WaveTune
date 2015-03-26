@@ -97,7 +97,7 @@ public class MusiqueResource {
 		System.out.println("upload");
 		System.out.println("pseudo : " +pseudo);
 
-		File dir =new File("directory"+File.separator+pseudo);
+		File dir =new File("src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+pseudo);
 		if(!dir.exists())
 			dir.mkdirs();
 
