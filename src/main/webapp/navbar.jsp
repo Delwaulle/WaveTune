@@ -9,7 +9,7 @@ window.onload = function(){
 		$("#buttonsignin").empty();
 		$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+login+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='/profil.jsp'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
 	}
-	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact"){
+	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact") ||  document.location.href=="http://localhost:8080/download.jsp"){
 	
 	}
 	else {
@@ -152,6 +152,7 @@ $(document).ready(function() {
             <li><a href="/music.jsp">Ma musique</a></li>
 			<li><a href="/#about">&Agrave; propos</a></li>
             <li><a href="/#contact">Contact</a></li>
+			<li><a href="/download.jsp">T&eacute;l&eacute;chargement</a></li>
           </ul>
 	<form class="navbar-form navbar-right" role="sign">
                     
