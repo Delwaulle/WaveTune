@@ -9,7 +9,7 @@ window.onload = function(){
 		$("#buttonsignin").empty();
 		$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+login+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='/profil.jsp'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
 	}
-	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact") ||  document.location.href=="http://localhost:8080/download.jsp"){
+	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact" ||  document.location.href=="http://localhost:8080/donwload"){
 	
 	}
 	else {
@@ -33,6 +33,7 @@ $(document).ready(function() {
 			dataType : "json",
 			contentType: "application/json",
 			success: function( json ) {
+				alert("connection");
 				createCookie("pseudo", json.pseudo, 30);
 				var deconnect = document.getElementById('deconnect');
 				var myModal = document.getElementById('myModal');
