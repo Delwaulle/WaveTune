@@ -35,6 +35,11 @@
 			window.location.replace("http://localhost:8080/sorry.jsp");
 	}
 	}
+	
+	function upload(){
+		alert("Votre fichier a bien été uploadé");
+		window.location.reload();
+	}
   </script>
 	<div>
 	<%@include file='player.jsp' %>
@@ -44,7 +49,7 @@
 			<input id="uploadFile" name="uploadFile" type="file" />
 			<input id="user" name="user" type="hidden" value="admin"/>
 			<br /><br />
-			<input id="uploadSubmit" class="btn btn-primary" type="submit" value="Upload !" />
+			<input id="uploadSubmit" onclick="upload()" class="btn btn-primary" type="submit" value="Upload !" />
 		</form>
 		<iframe style="display:none;" id="uploadFrame" name="uploadFrame"></iframe>
 

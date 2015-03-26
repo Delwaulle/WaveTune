@@ -40,16 +40,24 @@ public class App extends Application{
 		dbi.open(UserDao.class).createUserAdmin();
 		User usr=dbi.open(UserDao.class).selectUserbyPseudo("admin");
 		System.out.println(usr.getEmail()+" -- "+usr.getPseudo()+" -- "+usr.getId());
-		File dir =new File("directory");
+		File dir =new File("src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+usr.getPseudo());
 		if(!dir.exists())
 			dir.mkdirs();
-		String path="rsc"+File.separator+"Eminem - We Made You"+".mp3";
+		/*File[] tab=dir.listFiles();
+		for(int i=0;i<dir.length();i++){
+			System.out.println(tab[i]);
+			System.out.println(tab[i].getName());
+			String path="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+tab[i].getName();
+			AudioParser ap=new AudioParser(path);
+			System.out.println(path);
+			dbi.open(MusiqueDao.class).insertMusique(i, ap.getTitle(), ap.getAlbum(), new Date().toString(), tab[i].getName(), ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
+		}*/
+		String path="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+"03  Muse - Undisclosed Desires.mp3";
 		AudioParser ap=new AudioParser(path);
-		System.out.println(ap.getTitle());
-		System.out.println(ap.getArtiste());
-		System.out.println(ap.getGenre());
-		System.out.println(ap.getAlbum());
-		System.out.println(new Date().toString());
-		dbi.open(MusiqueDao.class).insertMusique(1, ap.getTitle(), ap.getAlbum(), new Date().toString(), path, ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
+		dbi.open(MusiqueDao.class).insertMusique(1, ap.getTitle(), ap.getAlbum(), new Date().toString(), "03  Muse - Undisclosed Desires.mp3", ap.getArtiste(), ap.getGenre(), "rsc"+File.separator+"logo.png");
+
+		String path2="src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+"admin"+File.separator+"Britney Spears - if You Seek Amy.mp3";
+		AudioParser ap2=new AudioParser(path2);
+		dbi.open(MusiqueDao.class).insertMusique(1, ap2.getTitle(), ap2.getAlbum(), new Date().toString(), "Britney Spears - if You Seek Amy.mp3", ap2.getArtiste(), ap2.getGenre(), "rsc"+File.separator+"logo.png");
 	}
 }

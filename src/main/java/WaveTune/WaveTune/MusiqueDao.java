@@ -21,26 +21,26 @@ public interface MusiqueDao {
 	@RegisterMapperFactory(BeanMapperFactory.class)
 	public List<Musique> getAllMusic(@Bind("user_id") int user_id);
 
-	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo  ORDER BY titre ASC;")
+	@SqlQuery("SELECT * FROM musiques WHERE user_id=:user_id  ORDER BY titre ASC;")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	public List<Musique> getAllMusicByPseudo(@Bind("pseudo") String pseudo);
+	public List<Musique> getAllMusicByPseudo(@Bind("user_id") int user_id);
 
 
-	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo and album=:album ORDER BY titre ASC;")
+	@SqlQuery("SELECT * FROM musiques WHERE user_id=:user_id and album=:album ORDER BY titre ASC;")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	public List<Musique> getAlbumByPseudo(@Bind("pseudo") String pseudo, @Bind("album") String album);
+	public List<Musique> getAlbumByPseudo(@Bind("user_id") int user_id, @Bind("album") String album);
 
-	@SqlQuery("SELECT * FROM musiques WHERE pseudo=:pseudo and artiste=:artiste ORDER BY titre ASC;")
+	@SqlQuery("SELECT * FROM musiques WHERE user_id=:user_id and artiste=:artiste ORDER BY titre ASC;")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	public List<Musique> getArtisteByPseudo(@Bind("pseudo") String pseudo, @Bind("artiste") String artiste);
+	public List<Musique> getArtisteByPseudo(@Bind("user_id") int user_id, @Bind("artiste") String artiste);
 
-	@SqlQuery("SELECT album FROM musiques WHERE pseudo=:pseudo;")
+	@SqlQuery("SELECT album FROM musiques WHERE user_id=:user_id;")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	public List<String> getAllAlbum(@Bind("pseudo")String pseudo);
+	public List<String> getAllAlbum(@Bind("user_id") int user_id);
 
-	@SqlQuery("SELECT artiste FROM musiques WHERE pseudo=:pseudo;")
+	@SqlQuery("SELECT artiste FROM musiques WHERE user_id=:user_id;")
 	@RegisterMapperFactory(BeanMapperFactory.class)
-	public List<String> getAllArtiste(@Bind("pseudo")String pseudo);
+	public List<String> getAllArtiste(@Bind("user_id") int user_id);
 
 	@SqlQuery("SELECT url FROM musiques WHERE id=:id;")
 	public String getPathMusic(@Bind("id")int id);

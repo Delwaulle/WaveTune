@@ -32,29 +32,45 @@ public class MusiqueResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("all/{pseudo}")
-	public List<Musique> getAllMusique(@PathParam("pseudo") String pseudo){
-		return musiqueDao.getAllMusicByPseudo(pseudo);
+	public Musique[] getAllMusique(@PathParam("pseudo") String pseudo){
+		System.out.println(pseudo);
+		List<Musique> liste = musiqueDao.getAllMusicByPseudo(userDao.selectPseudoById(pseudo));
+		Musique[] vraiListe=new Musique[liste.size()];
+		for(int i =0;i<liste.size();i++){
+			vraiListe[i]=liste.get(i);
+		}
+		return vraiListe;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("album/{pseudo}&{album}")
-	public List<Musique> getAlbum(@PathParam("pseudo") String pseudo,@PathParam("album") String album){
-		return musiqueDao.getAlbumByPseudo(pseudo, album);
+	public Musique[] getAlbum(@PathParam("pseudo") String pseudo,@PathParam("album") String album){
+		List<Musique> liste = musiqueDao.getAlbumByPseudo(userDao.selectPseudoById(pseudo), album);
+		Musique[] vraiListe=new Musique[liste.size()];
+		for(int i =0;i<liste.size();i++){
+			vraiListe[i]=liste.get(i);
+		}
+		return vraiListe;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("artiste/{pseudo}&{artiste}")
-	public List<Musique> getArtiste(@PathParam("pseudo") String pseudo,@PathParam("artiste") String artiste){
-		return musiqueDao.getArtisteByPseudo(pseudo,artiste);
+	public Musique[] getArtiste(@PathParam("pseudo") String pseudo,@PathParam("artiste") String artiste){
+		List<Musique> liste = musiqueDao.getArtisteByPseudo(userDao.selectPseudoById(pseudo),artiste);
+		Musique[] vraiListe=new Musique[liste.size()];
+		for(int i =0;i<liste.size();i++){
+			vraiListe[i]=liste.get(i);
+		}
+		return vraiListe;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("album/all/{pseudo}")
 	public List<String> getAllAlbum(@PathParam("pseudo") String pseudo){
-		return musiqueDao.getAllAlbum(pseudo);
+		return musiqueDao.getAllAlbum(userDao.selectPseudoById(pseudo));
 	}
 
 
@@ -62,7 +78,7 @@ public class MusiqueResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("artiste/all/{pseudo}")
 	public List<String> getAllArtiste(@PathParam("pseudo") String pseudo){
-		return musiqueDao.getAllArtiste(pseudo);
+		return musiqueDao.getAllArtiste(userDao.selectPseudoById(pseudo));
 	}
 
 	@POST
@@ -85,13 +101,15 @@ public class MusiqueResource {
 		if(!dir.exists())
 			dir.mkdirs();
 
-		String path = "directory"+File.separator+pseudo+File.separator+headerOfFilePart.getFileName();
+		String path = "src"+File.separator+"main"+File.separator+"webapp"+File.separator+"directory"+File.separator+pseudo+File.separator+headerOfFilePart.getFileName();
 		System.out.println(path);
 
 
 		// save the file to the server
 		saveFile(fileInputStream, path);
 		String output = "File saved to server location : " + path;
+
+		String url=headerOfFilePart.getFileName();
 
 		System.out.println(output);
 		AudioParser ap=new AudioParser(path);
@@ -100,9 +118,9 @@ public class MusiqueResource {
 		String genre=ap.getGenre();
 		String album=ap.getAlbum();
 		String img="rsc"+File.separator+"logo.png";
-		System.out.println(title + " -- "+ artiste + " -- "+ genre + " -- "+ album);
+		System.out.println(title + " -- "+ artiste + " -- "+ genre + " -- "+ album + " -- ");
 		System.out.println(userDao.selectPseudoById(pseudo));
-		musiqueDao.insertMusique(userDao.selectPseudoById(pseudo), title, album, new Date().toString(), path, artiste, genre, img);
+		musiqueDao.insertMusique(userDao.selectPseudoById(pseudo), title, album, new Date().toString(), url, artiste, genre, img);
 
 		return Response.status(Response.Status.ACCEPTED).build();
 
