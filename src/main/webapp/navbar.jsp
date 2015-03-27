@@ -8,7 +8,7 @@ window.onload = function(){
 		$("#buttonsignin").empty();
 		$("<div class='btn-group'><button class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>Bienvenue "+login+"      <span class='glyphicon glyphicon-cog' aria-hidden='true'></span> </button><ul class='dropdown-menu'><li><a href='/profil.jsp'><i class='icon-user'></i>Profil</a></li><li class='divider'></li><li><a onclick='deconnect()'><i class='icon-list-alt'></i>D&eacute;connection</a></li></ul></div>").appendTo("#buttonsignin");	
 	}
-	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact" ||  document.location.href=="http://localhost:8080/donwload"){
+	else if(document.location.href=="http://localhost:8080/" || document.location.href=="http://localhost:8080/sorry.jsp" || document.location.href=="http://localhost:8080/#about"  ||  document.location.href=="http://localhost:8080/#contact" ||  document.location.href=="http://localhost:8080/donwload.jsp"){
 	
 	}
 	else {
@@ -33,7 +33,9 @@ $(document).ready(function() {
 			else{
 			$.ajax({
 			url: "http://localhost:8080/v1/user/connection",
-			data: JSON.stringify({"email" : $("#email").val(),"password" : CryptoJS.MD5($("#passwordinput").val()).toString()}),
+			//MD5 Success
+			//data: JSON.stringify({"email" : $("#email").val(),"password" : CryptoJS.MD5($("#passwordinput").val()).toString()}),
+			data: JSON.stringify({"email" : $("#email").val(),"password" : $("#passwordinput").val()}),
 			type: "POST",
 			dataType : "json",
 			contentType: "application/json",
@@ -99,7 +101,12 @@ $(document).ready(function() {
 			// The URL for the request
 			url: "http://localhost:8080/v1/user/inscription",
 			// The data to send (will be converted to a query string)
-			data: JSON.stringify({"email" : $("#Email").val(),"pseudo" : $("#pseudo").val(),"password" : CryptoJS.MD5($("#inputPasswordConfirm").val()).toString()}),
+			
+			//MD5 Success
+			//data: JSON.stringify({"email" : $("#Email").val(),"pseudo" : $("#pseudo").val(),"password" : CryptoJS.MD5($("#inputPasswordConfirm").val()).toString()}),
+			
+			data: JSON.stringify({"email" : $("#Email").val(),"pseudo" : $("#pseudo").val(),"password" : $("#inputPasswordConfirm").val()}),
+			
 			// Whether this is a POST or GET request
 			type: "POST",
 			// The type of data we expect back
@@ -124,7 +131,10 @@ $(document).ready(function() {
 			}).done(function(){				
 				$.ajax({
 			url: "http://localhost:8080/v1/user/connection",
-			data: JSON.stringify({"email" : $("#Email").val(),"password" : CryptoJS.MD5($("#inputPasswordConfirm").val()).toString()}),
+			//MD5 Success
+			
+			//data: JSON.stringify({"email" : $("#Email").val(),"password" : CryptoJS.MD5($("#inputPasswordConfirm").val()).toString()}),
+			data: JSON.stringify({"email" : $("#Email").val(),"password" : $("#inputPasswordConfirm").val()}),
 			type: "POST",
 			dataType : "json",
 			contentType: "application/json",

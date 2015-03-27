@@ -41,6 +41,10 @@
 
       <div class="starter-template">
         <h1>T&eacute;l&eacute;chargement</h1>
+		<p>
+		Vous pouvez t&eacute;l&eacute;charger l'apk de notre application en cliquant le bouton ci-dessous.<br>
+		Pensez &agrave; d&eacute;sactiver le contr&ocirc;le des sources inconnues sur votre smartphone.
+		</p>
 	</div><!-- /.container -->
        
 	 
@@ -53,10 +57,11 @@
 	
 	</div>
 	
-	
-	
+	<div id="footer">
+    <div class="navbar-inner  navbar-fixed-bottom">
 	<%@include file='footer.jsp' %>
-
+	</div>
+	</div>
 
 	
     <!-- Bootstrap core JavaScript
